@@ -15,7 +15,9 @@
         "accentDownbeat": true,
         "subdivisions": 1
       },
-      "notes": "Even simple down strums should sound musical. Accent beat 1 slightly."
+      "notes": "Even simple down strums should sound musical. Accent beat 1 slightly.",
+      "chords": ["G", "C", "D"],
+      "measuresPerChord": 2
     },
     {
       "name": "Down-Up Pattern",
@@ -27,7 +29,9 @@
         "accentDownbeat": true,
         "subdivisions": 2
       },
-      "notes": "Your arm is a metronome. Down on the beat, up on the 'and'."
+      "notes": "Your arm is a metronome. Down on the beat, up on the 'and'.",
+      "chords": ["G", "C"],
+      "measuresPerChord": 2
     },
     {
       "name": "Syncopated Pattern",
@@ -39,7 +43,9 @@
         "accentDownbeat": true,
         "subdivisions": 2
       },
-      "notes": "This is the most common strumming pattern in popular music. Master it and you can play hundreds of songs."
+      "notes": "This is the most common strumming pattern in popular music. Master it and you can play hundreds of songs.",
+      "chords": ["G", "Em", "C", "D"],
+      "measuresPerChord": 1
     },
     {
       "name": "Muted Strums (Chucking)",
@@ -51,14 +57,16 @@
         "accentDownbeat": true,
         "subdivisions": 1
       },
-      "notes": "The muted strum should sound like a crisp 'chk'. Don't lift your fingers completely off the strings."
+      "notes": "The muted strum should sound like a crisp 'chk'. Don't lift your fingers completely off the strings.",
+      "chords": ["Am"]
     },
     {
       "name": "Apply to a Song",
-      "instructions": "Pick a song with a simple chord progression (try G-Em-C-D or Am-F-C-G). Apply the strumming patterns you just practiced. Start with the syncopated pattern, then add muted strums for flavor.",
+      "instructions": "Pick a song with a simple chord progression. Apply the strumming patterns you just practiced. Start with the syncopated pattern, then add muted strums for flavor.",
       "duration": null,
       "metronome": null,
-      "notes": "Music is about feel. Listen to the song and match your strumming to its energy."
+      "notes": "Music is about feel. Listen to the song and match your strumming to its energy.",
+      "chords": ["G", "Em", "C", "D"]
     }
   ]
 }

@@ -79,12 +79,21 @@ struct SessionView: View {
                 Divider()
 
                 // Current step detail
-                StepView(
-                    name: viewModel.stepName,
-                    instructions: viewModel.instructions,
-                    notes: viewModel.notes
-                )
-                .padding(Theme.largeSpacing)
+                ZStack {
+                    StepView(
+                        name: viewModel.stepName,
+                        instructions: viewModel.instructions,
+                        notes: viewModel.notes,
+                        chords: viewModel.chords,
+                        currentChordIndex: viewModel.currentChordIndex,
+                        images: viewModel.images
+                    )
+                    .padding(Theme.largeSpacing)
+
+                    if case .countdown(let remaining) = viewModel.state {
+                        countdownOverlay(remaining: remaining)
+                    }
+                }
                 .frame(minHeight: 150)
             }
             .frame(minWidth: 300)
@@ -219,6 +228,42 @@ struct SessionView: View {
                     showingVoiceCommand = false
                 }
             }
+        }
+    }
+
+    // MARK: - Countdown Overlay
+
+    @ViewBuilder
+    private func countdownOverlay(remaining: Int) -> some View {
+        ZStack {
+            Color.black.opacity(0.6)
+
+            VStack(spacing: Theme.largeSpacing) {
+                Text("Get ready...")
+                    .font(.title3)
+                    .foregroundStyle(.white.opacity(0.8))
+
+                Text("\(remaining)")
+                    .font(.system(size: 72, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white)
+                    .contentTransition(.numericText())
+                    .animation(.easeInOut(duration: 0.2), value: remaining)
+
+                Text(viewModel.stepName)
+                    .font(.headline)
+                    .foregroundStyle(.white.opacity(0.7))
+
+                Button("Skip") {
+                    viewModel.skipCountdown()
+                }
+                .buttonStyle(.bordered)
+                .tint(.white)
+                .controlSize(.small)
+            }
+        }
+        .clipShape(RoundedRectangle(cornerRadius: Theme.cornerRadius))
+        .onTapGesture {
+            viewModel.skipCountdown()
         }
     }
 

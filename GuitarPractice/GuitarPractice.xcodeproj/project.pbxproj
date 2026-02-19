@@ -30,6 +30,9 @@
 		A10021 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10021; };
 		A10029 /* StepListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10029; };
 		A10030 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10030; };
+		A10031 /* ChordLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10031; };
+		A10032 /* ChordDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10032; };
+		A10033 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10033; };
 		A10022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10022; };
 		A10023 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10023; };
 		A10024 /* beginner-warmup.json in Resources */ = {isa = PBXBuildFile; fileRef = B10024; };
@@ -71,6 +74,9 @@
 		B10099 /* GuitarPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuitarPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B10029 /* StepListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepListView.swift; sourceTree = "<group>"; };
 		B10030 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		B10031 /* ChordLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordLibrary.swift; sourceTree = "<group>"; };
+		B10032 /* ChordDiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordDiagramView.swift; sourceTree = "<group>"; };
+		B10033 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B10100 /* GuitarPractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GuitarPractice.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +137,7 @@
 			children = (
 				B10004 /* PracticeRoutine.swift */,
 				B10005 /* PracticeSession.swift */,
+				B10031 /* ChordLibrary.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -159,6 +166,7 @@
 			children = (
 				G10009 /* Library */,
 				G10010 /* Session */,
+				G10016 /* Settings */,
 				G10011 /* Shared */,
 			);
 			path = UI;
@@ -194,8 +202,17 @@
 			isa = PBXGroup;
 			children = (
 				B10021 /* Theme.swift */,
+				B10032 /* ChordDiagramView.swift */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		G10016 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B10033 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		G10013 /* Resources */ = {
@@ -333,6 +350,9 @@
 				A10021 /* Theme.swift in Sources */,
 				A10029 /* StepListView.swift in Sources */,
 				A10030 /* SpeechRecognizer.swift in Sources */,
+				A10031 /* ChordLibrary.swift in Sources */,
+				A10032 /* ChordDiagramView.swift in Sources */,
+				A10033 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,6 +24,7 @@ class MetronomeEngine {
 
     private var downbeatClick: AVAudioPCMBuffer!
     private var normalClick: AVAudioPCMBuffer!
+    private var subdivisionClick: AVAudioPCMBuffer!
 
     // MARK: - Generation tracking to invalidate stale callbacks
 
@@ -104,18 +105,25 @@ class MetronomeEngine {
         let sr = Float(bufferSampleRate)
         downbeatClick = ClickSoundGenerator.downbeatClick(sampleRate: sr)
         normalClick = ClickSoundGenerator.normalClick(sampleRate: sr)
+        subdivisionClick = ClickSoundGenerator.subdivisionClick(sampleRate: sr)
     }
 
     // MARK: - Beat Scheduling
 
+    private enum BeatType { case downbeat, normal, subdivision }
+
     /// Creates a buffer that is exactly one beat long: click sound followed by silence.
     /// The buffer duration *is* the beat timing — no external clock needed.
-    private func makeBeatBuffer(isDownbeat: Bool) -> AVAudioPCMBuffer {
+    private func makeBeatBuffer(type: BeatType) -> AVAudioPCMBuffer {
         let effectiveBPM = Double(config.bpm * config.subdivisions)
         let beatDurationSec = 60.0 / effectiveBPM
         let totalFrames = AVAudioFrameCount(beatDurationSec * bufferSampleRate)
 
-        let click = (isDownbeat && config.accentDownbeat) ? downbeatClick! : normalClick!
+        let click: AVAudioPCMBuffer = switch type {
+        case .downbeat: config.accentDownbeat ? downbeatClick : normalClick
+        case .normal: normalClick
+        case .subdivision: subdivisionClick
+        }
         let clickFrames = min(click.frameLength, totalFrames)
 
         let buffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: totalFrames)!
@@ -140,8 +148,9 @@ class MetronomeEngine {
     private func scheduleBeat(beatInMeasure: Int, measure: Int, generation gen: Int) {
         guard isPlaying, gen == generation else { return }
 
-        let isDown = beatInMeasure == 0
-        let buffer = makeBeatBuffer(isDownbeat: isDown)
+        let isMainBeat = config.subdivisions <= 1 || beatInMeasure % config.subdivisions == 0
+        let beatType: BeatType = beatInMeasure == 0 ? .downbeat : (isMainBeat ? .normal : .subdivision)
+        let buffer = makeBeatBuffer(type: beatType)
 
         let displayBeat = beatInMeasure + 1
         let displayMeasure = measure

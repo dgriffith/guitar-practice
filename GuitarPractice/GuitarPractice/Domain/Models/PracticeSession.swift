@@ -5,6 +5,7 @@ import Observation
 
 enum SessionState: Equatable {
     case ready
+    case countdown(remaining: Int)
     case playing
     case paused
     case stepComplete

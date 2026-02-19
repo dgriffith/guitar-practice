@@ -27,7 +27,8 @@
         "accentDownbeat": true,
         "subdivisions": 1
       },
-      "notes": "p = pulgar (thumb), i = indice (index), m = medio (middle), a = anular (ring)."
+      "notes": "p = pulgar (thumb), i = indice (index), m = medio (middle), a = anular (ring).",
+      "chords": ["Em"]
     },
     {
       "name": "Travis Picking — Basic Pattern",
@@ -39,7 +40,8 @@
         "accentDownbeat": true,
         "subdivisions": 1
       },
-      "notes": "Travis picking is the foundation of folk and country guitar. Merle Travis and Chet Atkins made it famous."
+      "notes": "Travis picking is the foundation of folk and country guitar. Merle Travis and Chet Atkins made it famous.",
+      "chords": ["C"]
     },
     {
       "name": "Arpeggiated Chord Pattern in 3/4",
@@ -51,7 +53,9 @@
         "accentDownbeat": true,
         "subdivisions": 2
       },
-      "notes": null
+      "notes": null,
+      "chords": ["Am", "Dm", "E", "Am"],
+      "measuresPerChord": 2
     },
     {
       "name": "Dust in the Wind Pattern",
@@ -63,7 +67,9 @@
         "accentDownbeat": true,
         "subdivisions": 2
       },
-      "notes": null
+      "notes": null,
+      "chords": ["C", "Cmaj7", "Cadd9"],
+      "measuresPerChord": 2
     },
     {
       "name": "Landslide Pattern",
@@ -75,7 +81,9 @@
         "accentDownbeat": true,
         "subdivisions": 2
       },
-      "notes": "Keep the thumb's alternating bass steady while the fingers play a rolling pattern on the treble strings. Lindsey Buckingham often plays this with a capo on the 3rd fret."
+      "notes": "Keep the thumb's alternating bass steady while the fingers play a rolling pattern on the treble strings. Lindsey Buckingham often plays this with a capo on the 3rd fret.",
+      "chords": ["C", "G/B", "Am7", "G/B"],
+      "measuresPerChord": 2
     },
     {
       "name": "Free Fingerpicking",

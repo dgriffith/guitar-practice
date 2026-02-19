@@ -8,6 +8,8 @@ class SessionViewModel {
     private let soundPlayer: SoundPlayer
     private let speechRecognizer: SpeechRecognizer
     private var timer: Timer?
+    private var countdownTimer: Timer?
+    private var hasPlayedFirstStep = false
 
     /// BPM overrides per step index. Only contains entries for steps the user adjusted.
     private(set) var bpmOverrides: [Int: Int] = [:]
@@ -26,6 +28,25 @@ class SessionViewModel {
     var notes: String? { session.currentStep.notes }
     var isTimed: Bool { session.currentStep.isTimed }
     var isMetronomeActive: Bool { session.currentStep.hasMetronome }
+
+    // MARK: - Chords & Images
+
+    var chords: [String]? { session.currentStep.chords }
+    var hasChords: Bool { session.currentStep.hasChords }
+    var images: [String]? { session.currentStep.images }
+    var hasImages: Bool { session.currentStep.hasImages }
+
+    var currentChordIndex: Int {
+        guard let chords = session.currentStep.chords, !chords.isEmpty else { return 0 }
+        let mpc = session.currentStep.measuresPerChord ?? 1
+        let measure = max(0, metronome.currentMeasure - 1) // 0-based
+        return (measure / mpc) % chords.count
+    }
+
+    var currentChord: String? {
+        guard let chords = session.currentStep.chords, !chords.isEmpty else { return nil }
+        return chords[currentChordIndex]
+    }
     var canGoBack: Bool { !session.isFirstStep }
     var isLastStep: Bool { session.isLastStep }
     var state: SessionState { session.state }
@@ -53,7 +74,12 @@ class SessionViewModel {
         "Step \(session.currentStepIndex + 1) of \(session.totalSteps)"
     }
 
-    var currentBeat: Int { metronome.currentBeat }
+    var currentBeat: Int {
+        let raw = metronome.currentBeat
+        let subs = session.currentStep.metronome?.subdivisions ?? 1
+        guard subs > 1 else { return raw }
+        return ((raw - 1) / subs) + 1
+    }
     var currentMeasure: Int { metronome.currentMeasure }
 
     var beatsPerMeasure: Int {
@@ -162,7 +188,9 @@ class SessionViewModel {
 
         switch command {
         case .start:
-            if session.state == .ready || session.state == .paused || session.state == .stepComplete {
+            if case .countdown = session.state {
+                skipCountdown()
+            } else if session.state == .ready || session.state == .paused || session.state == .stepComplete {
                 togglePlayPause()
             }
         case .pause:
@@ -171,6 +199,10 @@ class SessionViewModel {
             }
         case .next:
             nextStep()
+        case .back:
+            previousStep()
+        case .restart:
+            restartStep()
         case .faster:
             adjustBPM(by: 5)
         case .slower:
@@ -189,6 +221,8 @@ class SessionViewModel {
         switch session.state {
         case .ready:
             startCurrentStep()
+        case .countdown:
+            skipCountdown()
         case .playing:
             pause()
         case .paused:
@@ -225,6 +259,12 @@ class SessionViewModel {
         nextStep()
     }
 
+    func restartStep() {
+        stopTimerAndMetronome()
+        session.stepElapsedTime = 0
+        startCurrentStep()
+    }
+
     func goToStep(_ index: Int) {
         guard index >= 0, index < session.totalSteps, index != session.currentStepIndex else { return }
         stopTimerAndMetronome()
@@ -234,6 +274,8 @@ class SessionViewModel {
     }
 
     func cleanup() {
+        countdownTimer?.invalidate()
+        countdownTimer = nil
         stopTimerAndMetronome()
         speechRecognizer.stopListening()
     }
@@ -255,7 +297,50 @@ class SessionViewModel {
         return config
     }
 
+    private var stepPauseEnabled: Bool {
+        UserDefaults.standard.object(forKey: "stepPauseEnabled") as? Bool ?? true
+    }
+
+    private var stepPauseDuration: Int {
+        UserDefaults.standard.object(forKey: "stepPauseDuration") as? Int ?? 5
+    }
+
     private func startCurrentStep() {
+        if hasPlayedFirstStep && stepPauseEnabled {
+            beginCountdown()
+        } else {
+            hasPlayedFirstStep = true
+            beginPlaying()
+        }
+    }
+
+    private func beginCountdown() {
+        let duration = stepPauseDuration
+        session.state = .countdown(remaining: duration)
+
+        countdownTimer?.invalidate()
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self else { return }
+            if case .countdown(let remaining) = self.session.state {
+                if remaining <= 1 {
+                    self.countdownTimer?.invalidate()
+                    self.countdownTimer = nil
+                    self.beginPlaying()
+                } else {
+                    self.session.state = .countdown(remaining: remaining - 1)
+                }
+            }
+        }
+    }
+
+    func skipCountdown() {
+        countdownTimer?.invalidate()
+        countdownTimer = nil
+        beginPlaying()
+    }
+
+    private func beginPlaying() {
+        hasPlayedFirstStep = true
         session.state = .playing
         session.stepElapsedTime = 0
         startTimer()

@@ -42,6 +42,11 @@ struct ClickSoundGenerator {
         generateClick(frequency: 440.0, durationSeconds: 0.02, sampleRate: sampleRate, amplitude: 0.7)
     }
 
+    /// Quiet click for subdivision beats (the "and" between main beats)
+    static func subdivisionClick(sampleRate: Float = 44100.0) -> AVAudioPCMBuffer {
+        generateClick(frequency: 660.0, durationSeconds: 0.015, sampleRate: sampleRate, amplitude: 0.35)
+    }
+
     /// Generate a short chime sound for step completion notifications
     static func completionChime(sampleRate: Float = 44100.0) -> AVAudioPCMBuffer {
         let durationSeconds: Float = 0.5

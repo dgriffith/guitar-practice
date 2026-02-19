@@ -6,9 +6,11 @@ import Speech
 // MARK: - VoiceCommand
 
 enum VoiceCommand: String, CaseIterable {
+    case restart
     case start
     case pause
     case next
+    case back
     case faster
     case slower
 
@@ -18,6 +20,8 @@ enum VoiceCommand: String, CaseIterable {
         case .start: ["start", "go", "play", "resume"]
         case .pause: ["pause", "stop", "wait"]
         case .next: ["next", "skip"]
+        case .back: ["back", "previous"]
+        case .restart: ["restart", "again", "repeat"]
         case .faster: ["faster", "fast", "speed up", "quicker"]
         case .slower: ["slower", "slow", "slow down"]
         }
