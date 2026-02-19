@@ -1,0 +1,78 @@
+{
+  "name": "Chord Changes",
+  "description": "Practice smooth chord transitions from open chords through barre chords and common progressions.",
+  "category": "chords",
+  "estimatedDurationMinutes": 18,
+  "tags": ["intermediate", "chords", "transitions"],
+  "steps": [
+    {
+      "name": "Open Chord Review",
+      "instructions": "Play through each open chord shape: E, Em, A, Am, D, Dm, G, C. Strum each once and check that every string rings clearly. Adjust finger placement as needed.",
+      "duration": null,
+      "metronome": null,
+      "notes": "If any chord buzzes, isolate the problem string and fix your finger position before moving on."
+    },
+    {
+      "name": "Two-Chord Switches — Slow",
+      "instructions": "Switch between G and C every 4 beats. Strum on beat 1, let it ring, then switch. Focus on landing all fingers simultaneously rather than one at a time.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 60,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "The goal is accuracy, not speed. Clean changes first."
+    },
+    {
+      "name": "Two-Chord Switches — Medium",
+      "instructions": "Same G to C changes, but now switch every 2 beats. Strum on each beat. Keep your fingers close to the fretboard during transitions.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 80,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": null
+    },
+    {
+      "name": "Barre Chord Introduction",
+      "instructions": "Practice the F major barre chord shape at the first fret. Press firmly with your index finger across all 6 strings. Pick each string individually to check for buzzing. Adjust until every string sounds clean.",
+      "duration": null,
+      "metronome": null,
+      "notes": "Barre chords take time. Don't get frustrated — focus on small improvements each session."
+    },
+    {
+      "name": "Barre Chord Changes",
+      "instructions": "Switch between F barre chord and open C chord every 4 beats. This is a challenging transition — take your time.",
+      "duration": 180,
+      "metronome": {
+        "bpm": 50,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "If you can't make the switch in time, just mute the strings on the beat and catch up."
+    },
+    {
+      "name": "Chord Progression: I-IV-V-I",
+      "instructions": "Play the progression G - C - D - G. Give each chord one full measure (4 beats). Strum a simple down-down-up-down-up pattern. Repeat the progression continuously.",
+      "duration": 180,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": null
+    },
+    {
+      "name": "Free Play — Apply Chord Changes",
+      "instructions": "Pick a song you know and practice the chord changes at your own pace. Focus on the transitions that feel weakest.",
+      "duration": null,
+      "metronome": null,
+      "notes": null
+    }
+  ]
+}

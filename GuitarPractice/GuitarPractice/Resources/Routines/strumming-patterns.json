@@ -1,0 +1,64 @@
+{
+  "name": "Strumming Patterns",
+  "description": "Build strumming fluency from basic downstrokes through syncopated and muted patterns.",
+  "category": "strumming",
+  "estimatedDurationMinutes": 14,
+  "tags": ["beginner", "strumming", "rhythm"],
+  "steps": [
+    {
+      "name": "Down Strums Only",
+      "instructions": "Hold a G chord. Strum down on every beat — 1, 2, 3, 4. Keep your strumming arm moving in a steady, relaxed motion. Focus on hitting all the strings evenly. Try this on G, then C, then D.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "Even simple down strums should sound musical. Accent beat 1 slightly."
+    },
+    {
+      "name": "Down-Up Pattern",
+      "instructions": "Keep your arm moving in constant down-up motion like a pendulum. Strum: Down-Up-Down-Up on every eighth note. The key insight: your arm never stops moving — you just choose when to make contact with the strings.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 80,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "Your arm is a metronome. Down on the beat, up on the 'and'."
+    },
+    {
+      "name": "Syncopated Pattern",
+      "instructions": "The classic folk/rock pattern: Down, Down-Up, Up-Down-Up (D, D-U, U-D-U). In count: 1, 2-and, and-4-and. Your arm still moves constantly — you skip the strum on beat 3 (arm moves down but misses strings).",
+      "duration": 180,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "This is the most common strumming pattern in popular music. Master it and you can play hundreds of songs."
+    },
+    {
+      "name": "Muted Strums (Chucking)",
+      "instructions": "Hold a chord but lightly release pressure with your fretting hand to mute the strings on specific beats. Play: Strum-Mute-Strum-Mute (strum on 1 and 3, mute/chuck on 2 and 4). This creates a percussive rhythm.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 90,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "The muted strum should sound like a crisp 'chk'. Don't lift your fingers completely off the strings."
+    },
+    {
+      "name": "Apply to a Song",
+      "instructions": "Pick a song with a simple chord progression (try G-Em-C-D or Am-F-C-G). Apply the strumming patterns you just practiced. Start with the syncopated pattern, then add muted strums for flavor.",
+      "duration": null,
+      "metronome": null,
+      "notes": "Music is about feel. Listen to the song and match your strumming to its energy."
+    }
+  ]
+}

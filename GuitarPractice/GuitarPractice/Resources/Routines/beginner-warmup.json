@@ -1,0 +1,59 @@
+{
+  "name": "Beginner Warmup",
+  "description": "A 15-minute warmup routine covering stretches, chromatic exercises, and basic chord shapes.",
+  "category": "warmup",
+  "estimatedDurationMinutes": 15,
+  "tags": ["beginner", "warmup", "daily"],
+  "steps": [
+    {
+      "name": "Hand Stretches",
+      "instructions": "Stretch your fingers, wrists, and forearms. Spread your fingers wide, then make fists. Roll your wrists in circles.",
+      "duration": null,
+      "metronome": null,
+      "notes": "Never skip stretching. Cold hands lead to injury."
+    },
+    {
+      "name": "Chromatic Exercise — Frets 1-4",
+      "instructions": "Play 1-2-3-4 on each string, starting from the low E string. Use one finger per fret. Focus on clean fretting and even timing.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 60,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "Keep your thumb behind the neck, fingers curved."
+    },
+    {
+      "name": "Open Chord Shapes — G, C, D",
+      "instructions": "Cycle through G major, C major, and D major chords. Strum each chord 4 times, then switch. Focus on clean transitions.",
+      "duration": 180,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": null
+    },
+    {
+      "name": "Single String Picking",
+      "instructions": "Pick each open string individually, alternating between downstrokes and upstrokes. Focus on consistent tone and volume.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 80,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "Alternate picking is fundamental — build the habit now."
+    },
+    {
+      "name": "Cool Down",
+      "instructions": "Play anything you enjoy for a few minutes. Noodle, strum, or just relax. Shake out your hands when done.",
+      "duration": null,
+      "metronome": null,
+      "notes": "End every session on a positive note."
+    }
+  ]
+}

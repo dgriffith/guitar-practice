@@ -1,0 +1,238 @@
+import SwiftUI
+
+struct SessionView: View {
+    @Bindable var viewModel: SessionViewModel
+    let onExit: () -> Void
+    let onSaveRoutine: (PracticeRoutine) -> Void
+
+    @State private var showExitConfirmation = false
+    @State private var showSaveConfirmation = false
+    @State private var saveError: String?
+    @State private var showingVoiceCommand = false
+
+    var body: some View {
+        VStack(spacing: 0) {
+            // Header: progress + exit button
+            HStack {
+                ProgressBarView(
+                    stepLabel: viewModel.stepLabel,
+                    progress: viewModel.progressFraction,
+                    state: viewModel.state
+                )
+
+                // Voice command indicator
+                voiceIndicator
+
+                Button(action: { confirmExit() }) {
+                    Image(systemName: "xmark.circle")
+                        .font(.title3)
+                        .foregroundStyle(.secondary)
+                }
+                .buttonStyle(.plain)
+                .keyboardShortcut(.escape, modifiers: [])
+                .help("End session (Esc)")
+            }
+            .padding(.horizontal, Theme.extraLargeSpacing)
+            .padding(.top, Theme.largeSpacing)
+            .padding(.bottom, Theme.spacing)
+
+            Divider()
+
+            if viewModel.state == .completed {
+                completedView
+            } else {
+                activeSessionView
+            }
+        }
+        .alert("End Practice Session?", isPresented: $showExitConfirmation) {
+            Button("Continue Practicing", role: .cancel) {}
+            Button("End Session", role: .destructive) { onExit() }
+        } message: {
+            Text("Your progress in this session will not be saved.")
+        }
+        .alert("Save BPM Changes?", isPresented: $showSaveConfirmation) {
+            Button("Don't Save") { onExit() }
+            Button("Save") {
+                onSaveRoutine(viewModel.routineWithBPMChanges())
+                onExit()
+            }
+        } message: {
+            let changes = viewModel.bpmChangeSummary
+            Text("You adjusted the tempo on \(changes.count) step\(changes.count == 1 ? "" : "s"):\n\n\(changes.joined(separator: "\n"))")
+        }
+    }
+
+    // MARK: - Active Session
+
+    @ViewBuilder
+    private var activeSessionView: some View {
+        HSplitView {
+            // Left: step list + current step detail
+            VStack(spacing: 0) {
+                StepListView(
+                    steps: viewModel.steps,
+                    currentStepIndex: viewModel.currentStepIndex,
+                    onSelectStep: { viewModel.goToStep($0) }
+                )
+                .frame(minHeight: 150)
+
+                Divider()
+
+                // Current step detail
+                StepView(
+                    name: viewModel.stepName,
+                    instructions: viewModel.instructions,
+                    notes: viewModel.notes
+                )
+                .padding(Theme.largeSpacing)
+                .frame(minHeight: 150)
+            }
+            .frame(minWidth: 300)
+
+            // Right: timer, metronome, controls
+            VStack(spacing: Theme.largeSpacing) {
+                Spacer()
+
+                TimerView(
+                    timeDisplay: viewModel.timeDisplay,
+                    label: viewModel.timeLabel,
+                    isTimed: viewModel.isTimed,
+                    state: viewModel.state
+                )
+
+                if viewModel.state == .stepComplete {
+                    Text("Step complete! Press Next to continue.")
+                        .font(.callout)
+                        .foregroundStyle(.orange)
+                        .fontWeight(.medium)
+                }
+
+                if viewModel.isMetronomeActive, let ts = viewModel.currentTimeSignature {
+                    MetronomeIndicatorView(
+                        beatsPerMeasure: viewModel.beatsPerMeasure,
+                        currentBeat: viewModel.currentBeat,
+                        bpm: viewModel.currentBPM,
+                        originalBPM: viewModel.originalBPM,
+                        isModified: viewModel.currentStepBPMModified,
+                        timeSignature: ts,
+                        onAdjustBPM: { viewModel.adjustBPM(by: $0) },
+                        onResetBPM: { viewModel.resetBPM() }
+                    )
+                }
+
+                Spacer()
+
+                TransportControlsView(
+                    state: viewModel.state,
+                    canGoBack: viewModel.canGoBack,
+                    isLastStep: viewModel.isLastStep,
+                    onBack: { viewModel.previousStep() },
+                    onPlayPause: { viewModel.togglePlayPause() },
+                    onNext: { viewModel.nextStep() },
+                    onSkip: { viewModel.skipStep() }
+                )
+            }
+            .frame(minWidth: 280)
+            .padding(Theme.largeSpacing)
+        }
+    }
+
+    // MARK: - Completed View
+
+    @ViewBuilder
+    private var completedView: some View {
+        VStack(spacing: Theme.extraLargeSpacing) {
+            Spacer()
+
+            Image(systemName: "checkmark.seal.fill")
+                .font(.system(size: 64))
+                .foregroundStyle(.green)
+
+            Text("Session Complete!")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+
+            Text("You finished \(viewModel.routineName)")
+                .font(.title3)
+                .foregroundStyle(.secondary)
+
+            if viewModel.hasBPMChanges {
+                VStack(spacing: Theme.spacing) {
+                    Text("Tempo changes made:")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    ForEach(viewModel.bpmChangeSummary, id: \.self) { change in
+                        Text(change)
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .padding(Theme.mediumSpacing)
+                .background(Color.blue.opacity(0.05))
+                .clipShape(RoundedRectangle(cornerRadius: Theme.cornerRadius))
+            }
+
+            HStack(spacing: Theme.largeSpacing) {
+                Button("Back to Library") {
+                    if viewModel.hasBPMChanges {
+                        showSaveConfirmation = true
+                    } else {
+                        onExit()
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.large)
+            }
+
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    // MARK: - Voice Indicator
+
+    @ViewBuilder
+    private var voiceIndicator: some View {
+        HStack(spacing: 4) {
+            if showingVoiceCommand, let command = viewModel.lastVoiceCommand {
+                Text(command.displayName)
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .foregroundStyle(Color.accentColor)
+                    .transition(.opacity)
+            }
+
+            Button(action: { viewModel.toggleVoice() }) {
+                Image(systemName: viewModel.isVoiceActive ? "mic.fill" : "mic.slash")
+                    .font(.body)
+                    .foregroundStyle(viewModel.isVoiceActive ? .green : .secondary)
+            }
+            .buttonStyle(.plain)
+            .help(viewModel.isVoiceActive ? "Voice commands active (tap to mute)" : "Enable voice commands")
+        }
+        .onChange(of: viewModel.lastVoiceCommandTime) {
+            withAnimation(.easeIn(duration: 0.15)) {
+                showingVoiceCommand = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                withAnimation(.easeOut(duration: 0.3)) {
+                    showingVoiceCommand = false
+                }
+            }
+        }
+    }
+
+    // MARK: - Helpers
+
+    private func confirmExit() {
+        if viewModel.state == .completed {
+            if viewModel.hasBPMChanges {
+                showSaveConfirmation = true
+            } else {
+                onExit()
+            }
+        } else {
+            showExitConfirmation = true
+        }
+    }
+}

@@ -1,0 +1,88 @@
+{
+  "name": "Fingerpicking Patterns",
+  "description": "Develop fingerpicking technique from basic thumb exercises through Travis picking and arpeggiated patterns.",
+  "category": "fingerpicking",
+  "estimatedDurationMinutes": 15,
+  "tags": ["intermediate", "fingerpicking", "technique"],
+  "steps": [
+    {
+      "name": "Thumb Exercise — Bass Strings",
+      "instructions": "Using only your thumb (p), alternate between the 6th, 5th, and 4th strings in a steady pattern: 6-5-4-5, repeating. Keep your wrist relaxed and let your thumb move from the base joint.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 50,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "Your thumb provides the rhythmic foundation in fingerpicking. It must be rock solid."
+    },
+    {
+      "name": "p-i-m-a Pattern",
+      "instructions": "Hold an open E minor chord. Assign your thumb to string 6, index (i) to string 3, middle (m) to string 2, ring (a) to string 1. Play the pattern p-i-m-a repeatedly. Each finger plucks one note per beat.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 50,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "p = pulgar (thumb), i = indice (index), m = medio (middle), a = anular (ring)."
+    },
+    {
+      "name": "Travis Picking — Basic Pattern",
+      "instructions": "Hold a C chord. Your thumb alternates between strings 5 and 4 on beats 1 and 3. Your index and middle fingers fill in on strings 2 and 1 on beats 2 and 4. Pattern: p(5)-i(2)-p(4)-m(1), repeat.",
+      "duration": 180,
+      "metronome": {
+        "bpm": 60,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "Travis picking is the foundation of folk and country guitar. Merle Travis and Chet Atkins made it famous."
+    },
+    {
+      "name": "Arpeggiated Chord Pattern in 3/4",
+      "instructions": "Hold an A minor chord. Play the arpeggio: p(5)-i(3)-m(2)-a(1)-m(2)-i(3), giving each note one eighth-note value. This creates a flowing waltz pattern. Try it on Am, then Dm, then E, then back to Am.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 50,
+        "timeSignature": { "beatsPerMeasure": 3, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": null
+    },
+    {
+      "name": "Dust in the Wind Pattern",
+      "instructions": "This classic Kansas song uses a fingerpicking pattern on a C chord: p(5)-i(3)-a(1)-m(2)-a(1)-i(3). Practice this pattern slowly until it feels natural, then try moving through C, Cmaj7, Cadd9.",
+      "duration": 180,
+      "metronome": {
+        "bpm": 60,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": null
+    },
+    {
+      "name": "Landslide Pattern",
+      "instructions": "Fleetwood Mac's Landslide uses a Travis-style pattern in 4/4 with an alternating bass. Hold a C chord: p(5)-i(2)-m(1)-i(2)-p(4)-i(2)-m(1)-i(2), with the thumb alternating bass notes on beats 1 and 3. Practice slowly on C, then move through the progression: C, G/B, Am7, G/B.",
+      "duration": 180,
+      "metronome": {
+        "bpm": 76,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "Keep the thumb's alternating bass steady while the fingers play a rolling pattern on the treble strings. Lindsey Buckingham often plays this with a capo on the 3rd fret."
+    },
+    {
+      "name": "Free Fingerpicking",
+      "instructions": "Combine the patterns you practiced. Move through chord progressions of your choice using any fingerpicking pattern. Experiment with mixing patterns within a progression.",
+      "duration": null,
+      "metronome": null,
+      "notes": null
+    }
+  ]
+}

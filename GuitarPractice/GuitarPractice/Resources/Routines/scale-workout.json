@@ -1,0 +1,64 @@
+{
+  "name": "Scale Workout",
+  "description": "Build scale fluency with pentatonic and major scale patterns, starting slow and building speed.",
+  "category": "scales",
+  "estimatedDurationMinutes": 16,
+  "tags": ["intermediate", "scales", "technique"],
+  "steps": [
+    {
+      "name": "Pentatonic Box 1 — Slow",
+      "instructions": "Play the A minor pentatonic scale in box position 1 (5th fret). Ascend and descend. Use strict alternate picking. One note per beat.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 60,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "Fingers: index on 5th fret, ring on 7th fret (pinky on 8th where needed)."
+    },
+    {
+      "name": "Pentatonic Box 1 — Faster",
+      "instructions": "Same A minor pentatonic, box 1. Increase to eighth notes — two notes per beat. Keep alternate picking strict. If you stumble, slow down and clean it up.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 80,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": null
+    },
+    {
+      "name": "G Major Scale — Full Pattern",
+      "instructions": "Play the G major scale across all 6 strings in open position. Ascend from low G (3rd fret, 6th string) to high G (3rd fret, 1st string) and back down. One note per beat.",
+      "duration": 180,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "Know your sharps: F# is the only sharp in G major."
+    },
+    {
+      "name": "Scale Sequences — Groups of 3",
+      "instructions": "Using the G major scale, play in groups of three ascending: 1-2-3, 2-3-4, 3-4-5, etc. Then reverse: 8-7-6, 7-6-5, etc. This builds melodic fluency beyond running scales up and down.",
+      "duration": 180,
+      "metronome": {
+        "bpm": 60,
+        "timeSignature": { "beatsPerMeasure": 3, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "The 3/4 time signature here matches the groups of three nicely."
+    },
+    {
+      "name": "Improvise Over the Scale",
+      "instructions": "Using the pentatonic or major scale shapes you just practiced, improvise freely. Make up melodies, try bends, slides, and hammer-ons. Have fun with it.",
+      "duration": null,
+      "metronome": null,
+      "notes": "This is where scales become music. Don't just run patterns — try to express something."
+    }
+  ]
+}
