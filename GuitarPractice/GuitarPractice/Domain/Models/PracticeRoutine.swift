@@ -46,24 +46,31 @@ struct MetronomeConfig: Codable, Hashable {
     let timeSignature: TimeSignature
     let accentDownbeat: Bool
     let subdivisions: Int
+    let swing: Double
 
     init(bpm: Int, timeSignature: TimeSignature = .fourFour,
-         accentDownbeat: Bool = true, subdivisions: Int = 1) {
+         accentDownbeat: Bool = true, subdivisions: Int = 1, swing: Double = 0.5) {
         self.bpm = min(300, max(20, bpm))
         self.timeSignature = timeSignature
         self.accentDownbeat = accentDownbeat
         self.subdivisions = max(1, subdivisions)
+        self.swing = min(0.75, max(0.5, swing))
     }
 
     func withBPM(_ newBPM: Int) -> MetronomeConfig {
         MetronomeConfig(bpm: newBPM, timeSignature: timeSignature,
-                        accentDownbeat: accentDownbeat, subdivisions: subdivisions)
+                        accentDownbeat: accentDownbeat, subdivisions: subdivisions, swing: swing)
+    }
+
+    func withSwing(_ newSwing: Double) -> MetronomeConfig {
+        MetronomeConfig(bpm: bpm, timeSignature: timeSignature,
+                        accentDownbeat: accentDownbeat, subdivisions: subdivisions, swing: newSwing)
     }
 }
 
 extension MetronomeConfig {
     enum CodingKeys: String, CodingKey {
-        case bpm, timeSignature, accentDownbeat, subdivisions
+        case bpm, timeSignature, accentDownbeat, subdivisions, swing
     }
 
     init(from decoder: Decoder) throws {
@@ -72,7 +79,8 @@ extension MetronomeConfig {
         let timeSignature = try container.decodeIfPresent(TimeSignature.self, forKey: .timeSignature) ?? .fourFour
         let accentDownbeat = try container.decodeIfPresent(Bool.self, forKey: .accentDownbeat) ?? true
         let subdivisions = try container.decodeIfPresent(Int.self, forKey: .subdivisions) ?? 1
-        self.init(bpm: rawBpm, timeSignature: timeSignature, accentDownbeat: accentDownbeat, subdivisions: subdivisions)
+        let swing = try container.decodeIfPresent(Double.self, forKey: .swing) ?? 0.5
+        self.init(bpm: rawBpm, timeSignature: timeSignature, accentDownbeat: accentDownbeat, subdivisions: subdivisions, swing: swing)
     }
 }
 

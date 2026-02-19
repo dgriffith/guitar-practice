@@ -8,10 +8,18 @@ class MetronomeEngine {
     private(set) var isPlaying: Bool = false
     private(set) var currentBeat: Int = 0
     private(set) var currentMeasure: Int = 1
+    private(set) var isInDropout: Bool = false
 
     // MARK: - Configuration
 
     private(set) var config: MetronomeConfig
+
+    // MARK: - Dropout Configuration
+
+    var dropoutEnabled: Bool = false
+    var dropoutPlayMeasures: Int = 4
+    var dropoutMuteMeasures: Int = 2
+    private var measuresInPhase: Int = 0
 
     // MARK: - Audio Graph
 
@@ -63,6 +71,8 @@ class MetronomeEngine {
         isPlaying = true
         currentBeat = 0
         currentMeasure = 1
+        isInDropout = false
+        measuresInPhase = 0
 
         playerNode.play()
 
@@ -77,6 +87,8 @@ class MetronomeEngine {
         playerNode.stop()
         currentBeat = 0
         currentMeasure = 1
+        isInDropout = false
+        measuresInPhase = 0
     }
 
     func updateConfig(_ newConfig: MetronomeConfig) {
@@ -87,6 +99,12 @@ class MetronomeEngine {
         if wasPlaying {
             start()
         }
+    }
+
+    func setDropout(enabled: Bool, play: Int, mute: Int) {
+        dropoutEnabled = enabled
+        dropoutPlayMeasures = max(1, play)
+        dropoutMuteMeasures = max(1, mute)
     }
 
     // MARK: - Private Setup
@@ -112,12 +130,30 @@ class MetronomeEngine {
 
     private enum BeatType { case downbeat, normal, subdivision }
 
-    /// Creates a buffer that is exactly one beat long: click sound followed by silence.
-    /// The buffer duration *is* the beat timing — no external clock needed.
-    private func makeBeatBuffer(type: BeatType) -> AVAudioPCMBuffer {
-        let effectiveBPM = Double(config.bpm * config.subdivisions)
-        let beatDurationSec = 60.0 / effectiveBPM
-        let totalFrames = AVAudioFrameCount(beatDurationSec * bufferSampleRate)
+    /// Compute the duration in seconds for a specific sub-beat, accounting for swing.
+    private func subBeatDuration(beatInMeasure: Int) -> Double {
+        let baseBeatDuration = 60.0 / Double(config.bpm)
+
+        if config.subdivisions == 2 && config.swing != 0.5 {
+            // Swing: on-beat sub-beats are longer, off-beat sub-beats are shorter
+            let isOnBeat = beatInMeasure % 2 == 0
+            return isOnBeat
+                ? baseBeatDuration * config.swing
+                : baseBeatDuration * (1.0 - config.swing)
+        }
+
+        // Straight timing
+        return baseBeatDuration / Double(config.subdivisions)
+    }
+
+    /// Creates a buffer that is exactly one sub-beat long: click sound followed by silence.
+    private func makeBeatBuffer(type: BeatType, durationSeconds: Double, silent: Bool) -> AVAudioPCMBuffer {
+        let totalFrames = AVAudioFrameCount(durationSeconds * bufferSampleRate)
+
+        let buffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: totalFrames)!
+        buffer.frameLength = totalFrames
+
+        guard !silent else { return buffer } // all zeros = silence
 
         let click: AVAudioPCMBuffer = switch type {
         case .downbeat: config.accentDownbeat ? downbeatClick : normalClick
@@ -126,20 +162,15 @@ class MetronomeEngine {
         }
         let clickFrames = min(click.frameLength, totalFrames)
 
-        let buffer = AVAudioPCMBuffer(pcmFormat: audioFormat, frameCapacity: totalFrames)!
-        buffer.frameLength = totalFrames
-
         let outL = buffer.floatChannelData![0]
         let outR = buffer.floatChannelData![1]
         let srcL = click.floatChannelData![0]
         let srcR = click.floatChannelData![1]
 
-        // Copy click samples
         for i in 0..<Int(clickFrames) {
             outL[i] = srcL[i]
             outR[i] = srcR[i]
         }
-        // Remaining frames are already zeroed by AVAudioPCMBuffer
 
         return buffer
     }
@@ -148,18 +179,37 @@ class MetronomeEngine {
     private func scheduleBeat(beatInMeasure: Int, measure: Int, generation gen: Int) {
         guard isPlaying, gen == generation else { return }
 
+        // Dropout phase tracking at the start of each measure
+        if beatInMeasure == 0 && dropoutEnabled {
+            measuresInPhase += 1
+            if isInDropout {
+                if measuresInPhase > dropoutMuteMeasures {
+                    measuresInPhase = 1
+                    isInDropout = false
+                }
+            } else {
+                if measuresInPhase > dropoutPlayMeasures {
+                    measuresInPhase = 1
+                    isInDropout = true
+                }
+            }
+        }
+
         let isMainBeat = config.subdivisions <= 1 || beatInMeasure % config.subdivisions == 0
         let beatType: BeatType = beatInMeasure == 0 ? .downbeat : (isMainBeat ? .normal : .subdivision)
-        let buffer = makeBeatBuffer(type: beatType)
+        let duration = subBeatDuration(beatInMeasure: beatInMeasure)
+        let buffer = makeBeatBuffer(type: beatType, durationSeconds: duration, silent: isInDropout)
 
         let displayBeat = beatInMeasure + 1
         let displayMeasure = measure
+        let dropoutState = isInDropout
 
         // Update UI immediately when the beat is scheduled to play
         DispatchQueue.main.async { [weak self] in
             guard let self, self.generation == gen else { return }
             self.currentBeat = displayBeat
             self.currentMeasure = displayMeasure
+            self.isInDropout = dropoutState
         }
 
         let totalSubBeats = config.timeSignature.beatsPerMeasure * config.subdivisions

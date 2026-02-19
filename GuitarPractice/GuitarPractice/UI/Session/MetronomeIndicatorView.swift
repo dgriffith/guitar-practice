@@ -7,6 +7,8 @@ struct MetronomeIndicatorView: View {
     let originalBPM: Int?
     let isModified: Bool
     let timeSignature: TimeSignature
+    let swing: Double
+    let isInDropout: Bool
     let onAdjustBPM: (Int) -> Void
     let onResetBPM: () -> Void
 
@@ -68,24 +70,54 @@ struct MetronomeIndicatorView: View {
                 }
             }
 
-            // Time signature
-            Text("\(timeSignature.beatsPerMeasure)/\(timeSignature.beatUnit)")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+            // Time signature + swing label
+            HStack(spacing: Theme.spacing) {
+                Text("\(timeSignature.beatsPerMeasure)/\(timeSignature.beatUnit)")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+
+                if swing > 0.5 {
+                    Text("Swing \(Int(swing * 100))%")
+                        .font(.caption)
+                        .fontWeight(.medium)
+                        .foregroundStyle(.orange)
+                }
+            }
+
+            // Dropout indicator
+            if isInDropout {
+                Text("Keep time!")
+                    .font(.caption)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.orange)
+                    .transition(.opacity)
+            }
 
             // Beat indicator dots
             HStack(spacing: 8) {
                 ForEach(1...beatsPerMeasure, id: \.self) { beat in
-                    Circle()
-                        .fill(beatColor(for: beat))
-                        .frame(
-                            width: beat == 1 ? 20 : 16,
-                            height: beat == 1 ? 20 : 16
-                        )
-                        .scaleEffect(beat == currentBeat ? 1.3 : 1.0)
-                        .animation(.easeOut(duration: 0.08), value: currentBeat)
+                    if isInDropout {
+                        Circle()
+                            .stroke(beatColor(for: beat), lineWidth: 2)
+                            .frame(
+                                width: beat == 1 ? 20 : 16,
+                                height: beat == 1 ? 20 : 16
+                            )
+                            .scaleEffect(beat == currentBeat ? 1.3 : 1.0)
+                            .animation(.easeOut(duration: 0.08), value: currentBeat)
+                    } else {
+                        Circle()
+                            .fill(beatColor(for: beat))
+                            .frame(
+                                width: beat == 1 ? 20 : 16,
+                                height: beat == 1 ? 20 : 16
+                            )
+                            .scaleEffect(beat == currentBeat ? 1.3 : 1.0)
+                            .animation(.easeOut(duration: 0.08), value: currentBeat)
+                    }
                 }
             }
+            .animation(.easeInOut(duration: 0.2), value: isInDropout)
         }
         .padding(Theme.mediumSpacing)
         .background(.regularMaterial, in: RoundedRectangle(cornerRadius: Theme.largeCornerRadius))

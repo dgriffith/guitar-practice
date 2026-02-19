@@ -105,6 +105,14 @@ class SessionViewModel {
         session.currentStep.metronome?.timeSignature
     }
 
+    // MARK: - Swing & Dropout
+
+    var currentSwing: Double {
+        session.currentStep.metronome?.swing ?? 0.5
+    }
+
+    var isInDropout: Bool { metronome.isInDropout }
+
     // MARK: - Init
 
     init(routine: PracticeRoutine) {
@@ -347,6 +355,13 @@ class SessionViewModel {
 
         if let config = effectiveConfig(for: session.currentStepIndex) {
             metronome.updateConfig(config)
+
+            // Apply dropout settings from UserDefaults
+            let dropoutEnabled = UserDefaults.standard.object(forKey: "dropoutEnabled") as? Bool ?? false
+            let dropoutPlay = UserDefaults.standard.object(forKey: "dropoutPlayMeasures") as? Int ?? 4
+            let dropoutMute = UserDefaults.standard.object(forKey: "dropoutMuteMeasures") as? Int ?? 2
+            metronome.setDropout(enabled: dropoutEnabled, play: dropoutPlay, mute: dropoutMute)
+
             metronome.start()
         }
     }

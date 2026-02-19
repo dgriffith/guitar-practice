@@ -124,6 +124,8 @@ struct SessionView: View {
                         originalBPM: viewModel.originalBPM,
                         isModified: viewModel.currentStepBPMModified,
                         timeSignature: ts,
+                        swing: viewModel.currentSwing,
+                        isInDropout: viewModel.isInDropout,
                         onAdjustBPM: { viewModel.adjustBPM(by: $0) },
                         onResetBPM: { viewModel.resetBPM() }
                     )

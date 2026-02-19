@@ -41,9 +41,10 @@
         "bpm": 70,
         "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
         "accentDownbeat": true,
-        "subdivisions": 2
+        "subdivisions": 2,
+        "swing": 0.67
       },
-      "notes": "This is the most common strumming pattern in popular music. Master it and you can play hundreds of songs.",
+      "notes": "This pattern uses a swing feel (67%) — the 'and' beats come slightly late, creating a shuffle groove. This is the most common strumming pattern in popular music.",
       "chords": ["G", "Em", "C", "D"],
       "measuresPerChord": 1
     },
