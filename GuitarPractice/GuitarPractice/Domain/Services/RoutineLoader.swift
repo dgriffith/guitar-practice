@@ -50,7 +50,7 @@ class RoutineLoader {
         try data.write(to: fileURL, options: .atomic)
     }
 
-    private func loadRoutine(from url: URL) -> PracticeRoutine? {
+    func loadRoutine(from url: URL) -> PracticeRoutine? {
         do {
             let data = try Data(contentsOf: url)
             return try JSONDecoder().decode(PracticeRoutine.self, from: data)
@@ -58,6 +58,26 @@ class RoutineLoader {
             print("Failed to decode \(url.lastPathComponent): \(error)")
             return nil
         }
+    }
+
+    func exportRoutine(_ routine: PracticeRoutine, to url: URL) throws {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        let data = try encoder.encode(routine)
+        try data.write(to: url, options: .atomic)
+    }
+
+    func importRoutine(from url: URL) throws -> PracticeRoutine {
+        let data = try Data(contentsOf: url)
+        let decoded = try JSONDecoder().decode(PracticeRoutine.self, from: data)
+        // Assign a fresh UUID so re-imports don't collide
+        let imported = PracticeRoutine(
+            name: decoded.name, description: decoded.description,
+            category: decoded.category, estimatedDurationMinutes: decoded.estimatedDurationMinutes,
+            tags: decoded.tags, steps: decoded.steps
+        )
+        try saveRoutine(imported)
+        return imported
     }
 
     private func userRoutinesDirectory() -> URL {

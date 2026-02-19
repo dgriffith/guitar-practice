@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct RoutineDetailView: View {
+    @Environment(AppState.self) private var appState
     let routine: PracticeRoutine
     let onStart: () -> Void
 
@@ -87,14 +88,24 @@ struct RoutineDetailView: View {
 
             Divider()
 
-            // Start button
-            HStack {
+            // Action buttons
+            HStack(spacing: Theme.largeSpacing) {
                 Spacer()
+
+                Button {
+                    appState.exportRoutine(routine)
+                } label: {
+                    Label("Export", systemImage: "square.and.arrow.up")
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+
                 Button(action: onStart) {
                     Label("Start Practice", systemImage: "play.fill")
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
+
                 Spacer()
             }
             .padding(Theme.extraLargeSpacing)

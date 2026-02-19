@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LibraryView: View {
+    @Environment(AppState.self) private var appState
     @Bindable var viewModel: LibraryViewModel
     @Binding var selectedRoutine: PracticeRoutine?
 
@@ -13,6 +14,17 @@ struct LibraryView: View {
         .listStyle(.sidebar)
         .searchable(text: $viewModel.searchText, prompt: "Search routines")
         .toolbar {
+            ToolbarItem(placement: .automatic) {
+                Button {
+                    appState.showImportPanel {
+                        viewModel.loadRoutines()
+                    }
+                } label: {
+                    Image(systemName: "square.and.arrow.down")
+                }
+                .help("Import routine from file")
+            }
+
             ToolbarItem(placement: .automatic) {
                 Picker("Category", selection: categoryBinding) {
                     Text("All").tag("")
