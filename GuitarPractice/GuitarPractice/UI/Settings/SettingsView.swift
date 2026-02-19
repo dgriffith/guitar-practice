@@ -9,12 +9,12 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            Section("Step Transitions") {
-                Toggle("Pause between steps", isOn: $stepPauseEnabled)
+            Section("Step Countdown") {
+                Toggle("Countdown before each step", isOn: $stepPauseEnabled)
 
                 if stepPauseEnabled {
                     Stepper(
-                        "Countdown: \(stepPauseDuration) second\(stepPauseDuration == 1 ? "" : "s")",
+                        "Duration: \(stepPauseDuration) second\(stepPauseDuration == 1 ? "" : "s")",
                         value: $stepPauseDuration,
                         in: 1...10
                     )

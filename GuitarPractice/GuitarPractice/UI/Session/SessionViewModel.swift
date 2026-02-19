@@ -9,8 +9,6 @@ class SessionViewModel {
     private let speechRecognizer: SpeechRecognizer
     private var timer: Timer?
     private var countdownTimer: Timer?
-    private var hasPlayedFirstStep = false
-
     /// BPM overrides per step index. Only contains entries for steps the user adjusted.
     private(set) var bpmOverrides: [Int: Int] = [:]
 
@@ -288,6 +286,46 @@ class SessionViewModel {
         speechRecognizer.stopListening()
     }
 
+    // MARK: - Session Log
+
+    func buildSessionLog() -> SessionLog {
+        let stepsCompleted = session.state == .completed
+            ? session.totalSteps
+            : session.currentStepIndex + 1
+
+        let stepLogs = session.routine.steps.enumerated().map { index, step in
+            let completed = index < session.currentStepIndex
+                || (index == session.currentStepIndex && session.state == .completed)
+            let timeSpent: TimeInterval
+            if index < session.currentStepIndex {
+                timeSpent = step.duration ?? 0
+            } else if index == session.currentStepIndex {
+                timeSpent = session.stepElapsedTime
+            } else {
+                timeSpent = 0
+            }
+            return StepLog(
+                stepName: step.name,
+                timeSpent: timeSpent,
+                bpmUsed: effectiveBPM(for: index) > 0 ? effectiveBPM(for: index) : nil,
+                originalBPM: step.metronome?.bpm,
+                completed: completed
+            )
+        }
+
+        return SessionLog(
+            id: UUID(),
+            routineId: session.routine.id,
+            routineName: session.routine.name,
+            routineCategory: session.routine.category,
+            completedAt: Date(),
+            totalDuration: session.sessionElapsedTime,
+            stepsCompleted: stepsCompleted,
+            totalSteps: session.totalSteps,
+            stepLogs: stepLogs
+        )
+    }
+
     // MARK: - Private
 
     private func effectiveBPM(for stepIndex: Int) -> Int {
@@ -314,10 +352,9 @@ class SessionViewModel {
     }
 
     private func startCurrentStep() {
-        if hasPlayedFirstStep && stepPauseEnabled {
+        if stepPauseEnabled {
             beginCountdown()
         } else {
-            hasPlayedFirstStep = true
             beginPlaying()
         }
     }
@@ -348,7 +385,6 @@ class SessionViewModel {
     }
 
     private func beginPlaying() {
-        hasPlayedFirstStep = true
         session.state = .playing
         session.stepElapsedTime = 0
         startTimer()

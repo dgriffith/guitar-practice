@@ -1,18 +1,44 @@
 import SwiftUI
 
+enum SidebarTab: String, CaseIterable {
+    case routines = "Routines"
+    case history = "History"
+}
+
 struct ContentView: View {
     @Environment(AppState.self) private var appState
     @State private var libraryViewModel = LibraryViewModel()
+    @State private var sidebarTab: SidebarTab = .routines
 
     var body: some View {
         @Bindable var appState = appState
 
         NavigationSplitView {
-            LibraryView(
-                viewModel: libraryViewModel,
-                selectedRoutine: $appState.selectedRoutine
-            )
+            VStack(spacing: 0) {
+                Picker("View", selection: $sidebarTab) {
+                    ForEach(SidebarTab.allCases, id: \.self) { tab in
+                        Text(tab.rawValue).tag(tab)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal, Theme.mediumSpacing)
+                .padding(.vertical, Theme.spacing)
+
+                switch sidebarTab {
+                case .routines:
+                    LibraryView(
+                        viewModel: libraryViewModel,
+                        selectedRoutine: $appState.selectedRoutine
+                    )
+                case .history:
+                    SessionLogListView()
+                }
+            }
             .navigationSplitViewColumnWidth(min: 280, ideal: 320, max: 450)
+            .onChange(of: sidebarTab) {
+                appState.selectedRoutine = nil
+                appState.selectedSessionLog = nil
+            }
         } detail: {
             detailView
         }
@@ -32,6 +58,8 @@ struct ContentView: View {
             RoutineDetailView(routine: routine) {
                 appState.startSession(for: routine)
             }
+        } else if let log = appState.selectedSessionLog {
+            SessionLogDetailView(log: log)
         } else {
             emptyState
         }
@@ -40,15 +68,17 @@ struct ContentView: View {
     @ViewBuilder
     private var emptyState: some View {
         VStack(spacing: Theme.largeSpacing) {
-            Image(systemName: "guitars")
+            Image(systemName: sidebarTab == .routines ? "guitars" : "clock.arrow.circlepath")
                 .font(.system(size: 48))
                 .foregroundStyle(.tertiary)
 
-            Text("Select a practice routine")
+            Text(sidebarTab == .routines ? "Select a practice routine" : "Select a session")
                 .font(.title2)
                 .foregroundStyle(.secondary)
 
-            Text("Choose a routine from the sidebar to preview and start practicing.")
+            Text(sidebarTab == .routines
+                 ? "Choose a routine from the sidebar to preview and start practicing."
+                 : "Select a completed session to view details.")
                 .font(.callout)
                 .foregroundStyle(.tertiary)
                 .multilineTextAlignment(.center)

@@ -33,6 +33,11 @@
 		A10031 /* ChordLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10031; };
 		A10032 /* ChordDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10032; };
 		A10033 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10033; };
+		A10034 /* SessionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10034; };
+		A10035 /* SessionLogStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10035; };
+		A10036 /* SessionLogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10036; };
+		A10037 /* SessionLogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10037; };
+		A10038 /* SessionLogCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10038; };
 		A10022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10022; };
 		A10023 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10023; };
 		A10024 /* beginner-warmup.json in Resources */ = {isa = PBXBuildFile; fileRef = B10024; };
@@ -77,6 +82,11 @@
 		B10031 /* ChordLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordLibrary.swift; sourceTree = "<group>"; };
 		B10032 /* ChordDiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordDiagramView.swift; sourceTree = "<group>"; };
 		B10033 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B10034 /* SessionLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLog.swift; sourceTree = "<group>"; };
+		B10035 /* SessionLogStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLogStore.swift; sourceTree = "<group>"; };
+		B10036 /* SessionLogListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLogListView.swift; sourceTree = "<group>"; };
+		B10037 /* SessionLogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLogDetailView.swift; sourceTree = "<group>"; };
+		B10038 /* SessionLogCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLogCardView.swift; sourceTree = "<group>"; };
 		B10100 /* GuitarPractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GuitarPractice.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,6 +148,7 @@
 				B10004 /* PracticeRoutine.swift */,
 				B10005 /* PracticeSession.swift */,
 				B10031 /* ChordLibrary.swift */,
+				B10034 /* SessionLog.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -146,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				B10006 /* RoutineLoader.swift */,
+				B10035 /* SessionLogStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -166,6 +178,7 @@
 			children = (
 				G10009 /* Library */,
 				G10010 /* Session */,
+				G10017 /* History */,
 				G10016 /* Settings */,
 				G10011 /* Shared */,
 			);
@@ -213,6 +226,16 @@
 				B10033 /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		G10017 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				B10036 /* SessionLogListView.swift */,
+				B10037 /* SessionLogDetailView.swift */,
+				B10038 /* SessionLogCardView.swift */,
+			);
+			path = History;
 			sourceTree = "<group>";
 		};
 		G10013 /* Resources */ = {
@@ -353,6 +376,11 @@
 				A10031 /* ChordLibrary.swift in Sources */,
 				A10032 /* ChordDiagramView.swift in Sources */,
 				A10033 /* SettingsView.swift in Sources */,
+				A10034 /* SessionLog.swift in Sources */,
+				A10035 /* SessionLogStore.swift in Sources */,
+				A10036 /* SessionLogListView.swift in Sources */,
+				A10037 /* SessionLogDetailView.swift in Sources */,
+				A10038 /* SessionLogCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
