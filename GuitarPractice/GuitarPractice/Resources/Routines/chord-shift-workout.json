@@ -1,0 +1,369 @@
+{
+  "name": "Chord Shift Workout",
+  "description": "Intensive chord transition practice across multiple keys using open chords, sus voicings, dominant 7ths, and major 7ths. Each step drills a different pair of chords that belong to the same key.",
+  "category": "chords",
+  "estimatedDurationMinutes": 20,
+  "tags": ["intermediate", "chords", "transitions", "endurance"],
+  "steps": [
+    {
+      "name": "Key of C — C to G",
+      "instructions": "Switch between C and G every measure. Strum on each beat, focusing on clean transitions. Land all fingers together.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "I to V in C major. Keep your ring finger anchored — it stays on the 3rd fret across both shapes.",
+      "chords": ["C", "G"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of C — G to Am",
+      "instructions": "Switch between G and Am every measure. Focus on moving your fingers as a unit rather than one at a time.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V to vi in C major.",
+      "chords": ["G", "Am"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of C — Am to Em",
+      "instructions": "Switch between Am and Em every measure. These shapes share a similar finger pattern — lift your index finger and shift the other two down one string.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "vi to iii in C major.",
+      "chords": ["Am", "Em"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of C — Em to Dm",
+      "instructions": "Switch between Em and Dm every measure. This is a bigger shape change — practice hovering your fingers over the target strings.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "iii to ii in C major.",
+      "chords": ["Em", "Dm"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of C — Dm to Cmaj7",
+      "instructions": "Switch between Dm and Cmaj7 every measure. The maj7 adds a dreamy quality — listen to the color change.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "ii to Imaj7 in C major.",
+      "chords": ["Dm", "Cmaj7"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of C — Cmaj7 to Am",
+      "instructions": "Switch between Cmaj7 and Am every measure. Both share the open high E string — let it ring through.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "Imaj7 to vi in C major.",
+      "chords": ["Cmaj7", "Am"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of C — Dm to G7",
+      "instructions": "Switch between Dm and G7 every measure. This is a classic ii-V7 turnaround — the foundation of jazz and pop harmony.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "ii to V7 in C major.",
+      "chords": ["Dm", "G7"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of C — G7 to C",
+      "instructions": "Switch between G7 and C every measure. Feel the strong pull of the dominant 7th resolving home.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V7 to I in C major. The B in G7 wants to resolve up to C.",
+      "chords": ["G7", "C"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of G — G to D",
+      "instructions": "Switch between G and D every measure. These are the backbone chords of countless songs in G major.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "I to V in G major.",
+      "chords": ["G", "D"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of G — D to Em",
+      "instructions": "Switch between D and Em every measure. Moving from a treble-string chord to a full 6-string chord — watch your strum width.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V to vi in G major.",
+      "chords": ["D", "Em"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of G — Em to C",
+      "instructions": "Switch between Em and C every measure. Em is open and wide, C is compact — practice the contrast.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "vi to IV in G major.",
+      "chords": ["Em", "C"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of G — C to Dsus4",
+      "instructions": "Switch between C and Dsus4 every measure. The sus4 creates tension that wants to resolve — hold it through the measure.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "IV to Vsus4 in G major.",
+      "chords": ["C", "Dsus4"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of G — Am to D7",
+      "instructions": "Switch between Am and D7 every measure. A classic ii-V7 in G — the D7 pulls strongly toward G.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "ii to V7 in G major.",
+      "chords": ["Am", "D7"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of G — D7 to Gmaj7",
+      "instructions": "Switch between D7 and Gmaj7 every measure. V7 resolving to Imaj7 — a smooth, sophisticated sound.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V7 to Imaj7 in G major.",
+      "chords": ["D7", "Gmaj7"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of G — Gmaj7 to Em",
+      "instructions": "Switch between Gmaj7 and Em every measure. Gmaj7 only changes one note from G — the F# on the 1st string.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "Imaj7 to vi in G major.",
+      "chords": ["Gmaj7", "Em"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of G — G to Dsus2",
+      "instructions": "Switch between G and Dsus2 every measure. The sus2 has an open, airy sound — enjoy the texture.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "I to Vsus2 in G major.",
+      "chords": ["G", "Dsus2"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of D — D to A",
+      "instructions": "Switch between D and A every measure. Two bright major chords — keep the energy up.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "I to V in D major.",
+      "chords": ["D", "A"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of D — A to G",
+      "instructions": "Switch between A and G every measure. Both are strong open chords — make each one ring clearly.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V to IV in D major.",
+      "chords": ["A", "G"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of D — Em to A7",
+      "instructions": "Switch between Em and A7 every measure. ii to V7 in D — this turnaround drives the music forward.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "ii to V7 in D major.",
+      "chords": ["Em", "A7"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of D — A7 to Dmaj7",
+      "instructions": "Switch between A7 and Dmaj7 every measure. The dominant 7th resolves beautifully into the major 7th.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V7 to Imaj7 in D major.",
+      "chords": ["A7", "Dmaj7"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of D — Dsus4 to D",
+      "instructions": "Switch between Dsus4 and D every measure. The sus4 creates and then releases tension — a classic resolution.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "Sus4 resolution. Just lift your pinky to go from Dsus4 to D.",
+      "chords": ["Dsus4", "D"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of D — Dsus2 to D",
+      "instructions": "Switch between Dsus2 and D every measure. The sus2 opens up the chord, then D brings it back to center.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "Sus2 resolution. Add your middle finger to go from Dsus2 to D.",
+      "chords": ["Dsus2", "D"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of D — G to Dmaj7",
+      "instructions": "Switch between G and Dmaj7 every measure. IV to Imaj7 — a warm, satisfying resolution.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "IV to Imaj7 in D major.",
+      "chords": ["G", "Dmaj7"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of A — A to E",
+      "instructions": "Switch between A and E every measure. Both are bright, full chords — keep the energy high.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "I to V in A major.",
+      "chords": ["A", "E"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of A — E to D",
+      "instructions": "Switch between E and D every measure. A wide shape change — your hand crosses the neck.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V to IV in A major.",
+      "chords": ["E", "D"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of A — Asus2 to A",
+      "instructions": "Switch between Asus2 and A every measure. Just add your index finger to move from sus2 to major.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "Sus2 resolution. A subtle but beautiful color shift.",
+      "chords": ["Asus2", "A"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of A — Asus4 to A",
+      "instructions": "Switch between Asus4 and A every measure. Lift your pinky to resolve the sus4 — a tiny move with big harmonic impact.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "Sus4 resolution. You'll hear this in the intro to countless songs.",
+      "chords": ["Asus4", "A"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of A — D to E7",
+      "instructions": "Switch between D and E7 every measure. IV to V7 — building tension before going home to A.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "IV to V7 in A major.",
+      "chords": ["D", "E7"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of A — E7 to Amaj7",
+      "instructions": "Switch between E7 and Amaj7 every measure. V7 resolving to Imaj7 — smooth and jazzy.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V7 to Imaj7 in A major.",
+      "chords": ["E7", "Amaj7"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of E — E to Esus4",
+      "instructions": "Switch between E and Esus4 every measure. Add your pinky on the G string to get the sus4.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "I to Isus4 in E major. A staple of rock and folk guitar.",
+      "chords": ["E", "Esus4"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of E — B7 to E",
+      "instructions": "Switch between B7 and E every measure. V7 to I — feel the resolution snap into place.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V7 to I in E major.",
+      "chords": ["B7", "E"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of E — A to Emaj7",
+      "instructions": "Switch between A and Emaj7 every measure. IV to Imaj7 — a warm, lush pairing.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "IV to Imaj7 in E major.",
+      "chords": ["A", "Emaj7"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Speed Round — G7 to C",
+      "instructions": "G7 to C at faster tempo. Push your accuracy at speed — if you miss, catch the next beat.",
+      "duration": 30,
+      "metronome": { "bpm": 95, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V7 to I in C major.",
+      "chords": ["G7", "C"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Speed Round — Am to D",
+      "instructions": "Am to D at faster tempo. The ii-V change shows up everywhere — lock this one in.",
+      "duration": 30,
+      "metronome": { "bpm": 95, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "ii to V in G major.",
+      "chords": ["Am", "D"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Speed Round — D to A",
+      "instructions": "D to A at faster tempo. Precise finger placement is key — both shapes are compact.",
+      "duration": 30,
+      "metronome": { "bpm": 95, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "I to V in D major.",
+      "chords": ["D", "A"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Speed Round — Dsus4 to D",
+      "instructions": "Dsus4 to D at faster tempo. Quick sus4 resolutions — pinky on, pinky off.",
+      "duration": 30,
+      "metronome": { "bpm": 95, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": null,
+      "chords": ["Dsus4", "D"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Speed Round — E7 to A",
+      "instructions": "E7 to A at faster tempo. Feel the V7 pull toward the tonic — make it snap.",
+      "duration": 30,
+      "metronome": { "bpm": 95, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V7 to I in A major.",
+      "chords": ["E7", "A"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Speed Round — C to Em",
+      "instructions": "C to Em at faster tempo. Strum with confidence through the shape change.",
+      "duration": 30,
+      "metronome": { "bpm": 95, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "I to iii in C major.",
+      "chords": ["C", "Em"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Speed Round — Gmaj7 to Am",
+      "instructions": "Gmaj7 to Am at faster tempo. Imaj7 to ii — a jazzy, flowing change.",
+      "duration": 30,
+      "metronome": { "bpm": 95, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "Imaj7 to ii in G major.",
+      "chords": ["Gmaj7", "Am"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Speed Round — A7 to D",
+      "instructions": "A7 to D to close it out. V7 to I in D major — strong finish. Make it clean!",
+      "duration": 30,
+      "metronome": { "bpm": 95, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "V7 to I in D major.",
+      "chords": ["A7", "D"],
+      "measuresPerChord": 1
+    }
+  ]
+}

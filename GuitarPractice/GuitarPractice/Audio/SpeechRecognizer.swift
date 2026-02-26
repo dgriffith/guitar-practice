@@ -35,7 +35,7 @@ enum VoiceCommand: String, CaseIterable {
 /// Uses AVCaptureSession for audio input (instead of AVAudioEngine) to avoid
 /// conflicts with the MetronomeEngine which has its own AVAudioEngine.
 @Observable
-class SpeechRecognizer: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
+class SpeechRecognizer: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate, SFSpeechRecognizerDelegate {
     private(set) var isListening: Bool = false
     private(set) var isAvailable: Bool = false
     private(set) var lastCommand: VoiceCommand?
@@ -59,20 +59,43 @@ class SpeechRecognizer: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))
         isAvailable = speechRecognizer?.isAvailable ?? false
         super.init()
+        speechRecognizer?.delegate = self
+    }
+
+    // MARK: - SFSpeechRecognizerDelegate
+
+    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.isAvailable = available
+            if available && self.shouldRestart && !self.isListening {
+                self.beginRecognitionSession()
+            }
+        }
     }
 
     // MARK: - Public API
 
     func requestPermissionAndStart() {
+        // Request both speech recognition AND microphone permissions
         SFSpeechRecognizer.requestAuthorization { [weak self] status in
             DispatchQueue.main.async {
                 guard let self else { return }
-                switch status {
-                case .authorized:
-                    self.isAvailable = true
-                    self.startListening()
-                default:
+                guard status == .authorized else {
                     self.isAvailable = false
+                    return
+                }
+                self.isAvailable = true
+                // Now ensure microphone access for AVCaptureSession
+                let micStatus = AVCaptureDevice.authorizationStatus(for: .audio)
+                if micStatus == .authorized {
+                    self.startListening()
+                } else if micStatus == .notDetermined {
+                    AVCaptureDevice.requestAccess(for: .audio) { granted in
+                        DispatchQueue.main.async {
+                            if granted { self.startListening() }
+                        }
+                    }
                 }
             }
         }
@@ -80,9 +103,13 @@ class SpeechRecognizer: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 
     func startListening() {
         guard !isListening else { return }
-        guard let speechRecognizer, speechRecognizer.isAvailable else { return }
-
         shouldRestart = true
+
+        guard let speechRecognizer, speechRecognizer.isAvailable else {
+            // Not available yet — the delegate callback will start us when it becomes available
+            return
+        }
+
         beginRecognitionSession()
     }
 
@@ -103,6 +130,16 @@ class SpeechRecognizer: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
     private func beginRecognitionSession() {
         tearDownRecognition()
 
+        guard let speechRecognizer, speechRecognizer.isAvailable else {
+            scheduleRetry()
+            return
+        }
+
+        guard AVCaptureDevice.authorizationStatus(for: .audio) == .authorized else {
+            scheduleRetry()
+            return
+        }
+
         let request = SFSpeechAudioBufferRecognitionRequest()
         request.shouldReportPartialResults = true
         request.requiresOnDeviceRecognition = false
@@ -112,25 +149,35 @@ class SpeechRecognizer: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
 
         // Set up AVCaptureSession for microphone input
         let session = AVCaptureSession()
-        guard let microphone = AVCaptureDevice.default(for: .audio) else { return }
+        guard let microphone = AVCaptureDevice.default(for: .audio) else {
+            scheduleRetry()
+            return
+        }
 
         do {
             let input = try AVCaptureDeviceInput(device: microphone)
-            guard session.canAddInput(input) else { return }
+            guard session.canAddInput(input) else {
+                scheduleRetry()
+                return
+            }
             session.addInput(input)
         } catch {
+            scheduleRetry()
             return
         }
 
         let audioOutput = AVCaptureAudioDataOutput()
         audioOutput.setSampleBufferDelegate(self, queue: captureQueue)
-        guard session.canAddOutput(audioOutput) else { return }
+        guard session.canAddOutput(audioOutput) else {
+            scheduleRetry()
+            return
+        }
         session.addOutput(audioOutput)
 
         self.captureSession = session
         session.startRunning()
 
-        recognitionTask = speechRecognizer?.recognitionTask(with: request) { [weak self] result, error in
+        recognitionTask = speechRecognizer.recognitionTask(with: request) { [weak self] result, error in
             guard let self else { return }
 
             if let result {
@@ -146,6 +193,13 @@ class SpeechRecognizer: NSObject, AVCaptureAudioDataOutputSampleBufferDelegate {
         }
 
         isListening = true
+    }
+
+    private func scheduleRetry() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+            guard let self, self.shouldRestart, !self.isListening else { return }
+            self.beginRecognitionSession()
+        }
     }
 
     private func processResult(_ result: SFSpeechRecognitionResult) {

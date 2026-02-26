@@ -9,6 +9,7 @@ class SessionViewModel {
     private let speechRecognizer: SpeechRecognizer
     private var timer: Timer?
     private var countdownTimer: Timer?
+    private var pausedCountdownRemaining: Int?
     /// BPM overrides per step index. Only contains entries for steps the user adjusted.
     private(set) var bpmOverrides: [Int: Int] = [:]
 
@@ -196,12 +197,16 @@ class SessionViewModel {
         case .start:
             if case .countdown = session.state {
                 skipCountdown()
+            } else if session.state == .paused && pausedCountdownRemaining != nil {
+                resumeCountdown()
             } else if session.state == .ready || session.state == .paused || session.state == .stepComplete {
                 togglePlayPause()
             }
         case .pause:
             if session.state == .playing {
                 togglePlayPause()
+            } else if case .countdown = session.state {
+                pauseCountdown()
             }
         case .next:
             nextStep()
@@ -228,11 +233,15 @@ class SessionViewModel {
         case .ready:
             startCurrentStep()
         case .countdown:
-            skipCountdown()
+            pauseCountdown()
         case .playing:
             pause()
         case .paused:
-            resume()
+            if pausedCountdownRemaining != nil {
+                resumeCountdown()
+            } else {
+                resume()
+            }
         case .stepComplete:
             nextStep()
         case .completed:
@@ -361,6 +370,7 @@ class SessionViewModel {
 
     private func beginCountdown() {
         let duration = stepPauseDuration
+        pausedCountdownRemaining = nil
         session.state = .countdown(remaining: duration)
 
         countdownTimer?.invalidate()
@@ -381,7 +391,35 @@ class SessionViewModel {
     func skipCountdown() {
         countdownTimer?.invalidate()
         countdownTimer = nil
+        pausedCountdownRemaining = nil
         beginPlaying()
+    }
+
+    private func pauseCountdown() {
+        if case .countdown(let remaining) = session.state {
+            pausedCountdownRemaining = remaining
+        }
+        countdownTimer?.invalidate()
+        countdownTimer = nil
+        session.state = .paused
+    }
+
+    private func resumeCountdown() {
+        guard let remaining = pausedCountdownRemaining else { return }
+        pausedCountdownRemaining = nil
+        session.state = .countdown(remaining: remaining)
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self else { return }
+            if case .countdown(let r) = self.session.state {
+                if r <= 1 {
+                    self.countdownTimer?.invalidate()
+                    self.countdownTimer = nil
+                    self.beginPlaying()
+                } else {
+                    self.session.state = .countdown(remaining: r - 1)
+                }
+            }
+        }
     }
 
     private func beginPlaying() {

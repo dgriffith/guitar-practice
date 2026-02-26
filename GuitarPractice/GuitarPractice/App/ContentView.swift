@@ -46,6 +46,22 @@ struct ContentView: View {
             detailView
         }
         .frame(minWidth: 800, minHeight: 500)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    appState.isTunerActive.toggle()
+                    if appState.isTunerActive {
+                        appState.tunerEngine.start()
+                    } else {
+                        appState.tunerEngine.stop()
+                    }
+                } label: {
+                    Image(systemName: "tuningfork")
+                        .foregroundStyle(appState.isTunerActive ? Color.accentColor : .secondary)
+                }
+                .help(appState.isTunerActive ? "Hide tuner" : "Show tuner")
+            }
+        }
         .onDrop(of: [.json, .fileURL], isTargeted: $isDropTargeted) { providers in
             handleDrop(providers)
         }
@@ -86,6 +102,8 @@ struct ContentView: View {
                 appState.saveRoutine(routine)
                 libraryViewModel.loadRoutines()
             }
+        } else if appState.isTunerActive {
+            TunerView(tunerEngine: appState.tunerEngine)
         } else if let routine = appState.selectedRoutine {
             RoutineDetailView(routine: routine) {
                 appState.startSession(for: routine)

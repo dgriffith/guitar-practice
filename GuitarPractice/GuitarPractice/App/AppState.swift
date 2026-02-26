@@ -9,9 +9,11 @@ class AppState {
     var sessionLogs: [SessionLog] = []
     var selectedSessionLog: SessionLog?
     var importError: String?
+    var isTunerActive: Bool = false
 
     private let routineLoader = RoutineLoader()
     private let sessionLogStore = SessionLogStore()
+    let tunerEngine = TunerEngine()
 
     var isSessionActive: Bool { activeSession != nil }
 
