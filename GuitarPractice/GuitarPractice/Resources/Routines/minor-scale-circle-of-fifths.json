@@ -1,0 +1,100 @@
+{
+  "name": "Minor Scales \u2014 Circle of Fifths",
+  "description": "Natural minor scales following the circle of fifths. Open position keys first, then movable shapes alternating between sharp and flat keys.",
+  "category": "scales",
+  "estimatedDurationMinutes": 14,
+  "tags": ["intermediate", "scales", "theory", "technique"],
+  "steps": [
+    {
+      "name": "Am Natural Minor \u2014 Open",
+      "instructions": "Play the A natural minor scale in open position. Start from open A (5th string) and ascend through the full pattern, then descend. One note per beat.\n\nA minor is the relative minor of C major \u2014 same notes, different root.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Am Natural Minor - Open"],
+      "notes": "No sharps or flats. Same notes as C major but starting and resolving to A."
+    },
+    {
+      "name": "Em Natural Minor \u2014 Open",
+      "instructions": "Play the E natural minor scale in open position. Start from open low E (6th string). Ascend and descend. One note per beat.\n\nE minor is the relative minor of G major: one sharp (F#).",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Em Natural Minor - Open"],
+      "notes": "Key signature: F#. The F# appears on the 6th, 4th, and 1st strings."
+    },
+    {
+      "name": "Dm Natural Minor \u2014 Open",
+      "instructions": "Play the D natural minor scale in open position. Start from open D (4th string). Ascend and descend. One note per beat.\n\nD minor is the relative minor of F major: one flat (Bb).",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Dm Natural Minor - Open"],
+      "notes": "Key signature: Bb. Notice this pattern is the same shape as F major but with D as the tonal center."
+    },
+    {
+      "name": "Bm Natural Minor \u2014 Position 1",
+      "instructions": "Play B natural minor using the movable pattern rooted at the 7th fret on the 6th string. This is the standard minor scale shape with the root on the 6th string. Ascend and descend.\n\nB minor is the relative minor of D major: two sharps (F#, C#).",
+      "duration": 120,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Bm Natural Minor - Pos 1"],
+      "notes": "This movable shape works for any natural minor scale. Root on 6th string, 4th string, and 1st string."
+    },
+    {
+      "name": "Gm Natural Minor \u2014 Position 1",
+      "instructions": "Play G natural minor using the movable shape rooted at the 3rd fret on the 6th string. Same shape as Bm, shifted down 4 frets. Ascend and descend.\n\nG minor is the relative minor of Bb major: two flats (Bb, Eb).",
+      "duration": 120,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Gm Natural Minor - Pos 1"],
+      "notes": "Key signature: Bb, Eb. Notice the Eb on the 2nd string requires a stretch to fret 4."
+    },
+    {
+      "name": "F#m Natural Minor \u2014 Position 1",
+      "instructions": "Play F# natural minor using the movable shape rooted at the 2nd fret on the 6th string. Ascend and descend.\n\nF# minor is the relative minor of A major: three sharps (F#, C#, G#).",
+      "duration": 120,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["F#m Natural Minor - Pos 1"],
+      "notes": "Key signature: F#, C#, G#. Low on the neck \u2014 the frets are wider here, good stretch practice."
+    },
+    {
+      "name": "Cm Natural Minor \u2014 Position 1",
+      "instructions": "Play C natural minor using the movable shape rooted at the 8th fret on the 6th string. Ascend and descend.\n\nC minor is the relative minor of Eb major: three flats (Bb, Eb, Ab).",
+      "duration": 120,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Cm Natural Minor - Pos 1"],
+      "notes": "Key signature: Bb, Eb, Ab. Compare this shape to the Am open position \u2014 it's the same pattern, just moved up."
+    }
+  ]
+}

@@ -49,6 +49,12 @@
 		A10027 /* fingerpicking-patterns.json in Resources */ = {isa = PBXBuildFile; fileRef = B10027; };
 		A10028 /* strumming-patterns.json in Resources */ = {isa = PBXBuildFile; fileRef = B10028; };
 		A10042 /* chord-shift-workout.json in Resources */ = {isa = PBXBuildFile; fileRef = B10042; };
+		A10043 /* ScaleLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10043; };
+		A10044 /* ScaleDiagramView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10044; };
+		A10045 /* major-scale-circle-of-fifths.json in Resources */ = {isa = PBXBuildFile; fileRef = B10045; };
+		A10046 /* minor-scale-circle-of-fifths.json in Resources */ = {isa = PBXBuildFile; fileRef = B10046; };
+		A10047 /* minor-pentatonic-workout.json in Resources */ = {isa = PBXBuildFile; fileRef = B10047; };
+		A10048 /* major-pentatonic-workout.json in Resources */ = {isa = PBXBuildFile; fileRef = B10048; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +102,12 @@
 		B10040 /* TunerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerView.swift; sourceTree = "<group>"; };
 		B10041 /* TunerIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerIndicatorView.swift; sourceTree = "<group>"; };
 		B10100 /* GuitarPractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GuitarPractice.entitlements; sourceTree = "<group>"; };
+		B10043 /* ScaleLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleLibrary.swift; sourceTree = "<group>"; };
+		B10044 /* ScaleDiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleDiagramView.swift; sourceTree = "<group>"; };
+		B10045 /* major-scale-circle-of-fifths.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "major-scale-circle-of-fifths.json"; sourceTree = "<group>"; };
+		B10046 /* minor-scale-circle-of-fifths.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "minor-scale-circle-of-fifths.json"; sourceTree = "<group>"; };
+		B10047 /* minor-pentatonic-workout.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "minor-pentatonic-workout.json"; sourceTree = "<group>"; };
+		B10048 /* major-pentatonic-workout.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "major-pentatonic-workout.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +168,7 @@
 				B10004 /* PracticeRoutine.swift */,
 				B10005 /* PracticeSession.swift */,
 				B10031 /* ChordLibrary.swift */,
+				B10043 /* ScaleLibrary.swift */,
 				B10034 /* SessionLog.swift */,
 			);
 			path = Models;
@@ -226,6 +239,7 @@
 			children = (
 				B10021 /* Theme.swift */,
 				B10032 /* ChordDiagramView.swift */,
+				B10044 /* ScaleDiagramView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -275,6 +289,10 @@
 				B10027 /* fingerpicking-patterns.json */,
 				B10028 /* strumming-patterns.json */,
 				B10042 /* chord-shift-workout.json */,
+				B10045 /* major-scale-circle-of-fifths.json */,
+				B10046 /* minor-scale-circle-of-fifths.json */,
+				B10047 /* minor-pentatonic-workout.json */,
+				B10048 /* major-pentatonic-workout.json */,
 			);
 			path = Routines;
 			sourceTree = "<group>";
@@ -361,6 +379,10 @@
 				A10027 /* fingerpicking-patterns.json in Resources */,
 				A10028 /* strumming-patterns.json in Resources */,
 				A10042 /* chord-shift-workout.json in Resources */,
+				A10045 /* major-scale-circle-of-fifths.json in Resources */,
+				A10046 /* minor-scale-circle-of-fifths.json in Resources */,
+				A10047 /* minor-pentatonic-workout.json in Resources */,
+				A10048 /* major-pentatonic-workout.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +427,8 @@
 				A10039 /* TunerEngine.swift in Sources */,
 				A10040 /* TunerView.swift in Sources */,
 				A10041 /* TunerIndicatorView.swift in Sources */,
+				A10043 /* ScaleLibrary.swift in Sources */,
+				A10044 /* ScaleDiagramView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

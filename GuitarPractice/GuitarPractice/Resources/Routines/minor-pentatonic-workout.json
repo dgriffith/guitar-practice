@@ -1,0 +1,126 @@
+{
+  "name": "Minor Pentatonic Workout",
+  "description": "Master the minor pentatonic across all 5 positions in Am, then apply the shape to other keys up and down the neck.",
+  "category": "scales",
+  "estimatedDurationMinutes": 14,
+  "tags": ["intermediate", "scales", "pentatonic", "technique"],
+  "steps": [
+    {
+      "name": "Am Pentatonic \u2014 Position 1",
+      "instructions": "The classic box shape at the 5th fret. Ascend from the root (A, 6th string fret 5) to the highest note, then descend. Focus on clean alternate picking. One note per beat.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Am Pentatonic - Pos 1"],
+      "notes": "Index finger covers the 5th fret, ring finger the 7th, pinky the 8th. This is the most important pentatonic shape to know."
+    },
+    {
+      "name": "Am Pentatonic \u2014 Position 2",
+      "instructions": "Move up the neck to position 2 (frets 7\u201310). This connects directly above position 1. Ascend and descend. Notice where the root notes (A) land in this shape.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Am Pentatonic - Pos 2"],
+      "notes": "Root notes are on the 4th string (fret 7) and 2nd string (fret 10). Try sliding from position 1 into this shape."
+    },
+    {
+      "name": "Am Pentatonic \u2014 Position 3",
+      "instructions": "Continue up to position 3 (frets 9\u201313). This shape spans 5 frets, so it requires a wider hand stretch. Ascend and descend.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Am Pentatonic - Pos 3"],
+      "notes": "Root notes are on the 5th string (fret 12) and 2nd string (fret 10). The wider fret span here is good stretch practice."
+    },
+    {
+      "name": "Am Pentatonic \u2014 Position 4",
+      "instructions": "Position 4 sits at the 12th fret area (frets 12\u201315). Ascend and descend. This is the octave equivalent of the open position pattern.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Am Pentatonic - Pos 4"],
+      "notes": "Root notes are on the 5th string (fret 12) and 3rd string (fret 14)."
+    },
+    {
+      "name": "Am Pentatonic \u2014 Position 5",
+      "instructions": "Position 5 (frets 14\u201317) connects back down to position 1 an octave higher. Ascend and descend. After this, you've covered the entire neck!",
+      "duration": 90,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Am Pentatonic - Pos 5"],
+      "notes": "Root notes at 6th string fret 17 and 1st string fret 17. Try connecting all 5 positions in one long ascending run."
+    },
+    {
+      "name": "Em Pentatonic \u2014 Open Position",
+      "instructions": "Shift to E minor pentatonic in open position. Same shape as Am Pentatonic Pos 1 but starting from the open strings. Ascend from open low E and descend.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Em Pentatonic - Open"],
+      "notes": "This is the same shape as Am Pos 1 moved down to the nut. Open strings ring nicely \u2014 great for blues licks."
+    },
+    {
+      "name": "Dm Pentatonic \u2014 Position 1",
+      "instructions": "D minor pentatonic, box 1 at the 10th fret. Same shape as Am Pos 1, shifted up 5 frets. Ascend and descend.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Dm Pentatonic - Pos 1"],
+      "notes": "Notice how the shape is identical to Am Pos 1. The only difference is where on the neck you play it."
+    },
+    {
+      "name": "Gm Pentatonic \u2014 Position 1",
+      "instructions": "G minor pentatonic, box 1 at the 3rd fret. Ascend and descend. The wider frets down here require more finger stretch.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Gm Pentatonic - Pos 1"],
+      "notes": "Key of Gm \u2014 common in blues, funk, and rock. Bb, Hendrix, and countless others live in this key."
+    },
+    {
+      "name": "Bm Pentatonic \u2014 Position 1",
+      "instructions": "B minor pentatonic, box 1 at the 7th fret. Ascend and descend. A very common key for rock and pop soloing.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Bm Pentatonic - Pos 1"],
+      "notes": "By now the shape should feel familiar in any position. Focus on clean tone and even timing."
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "name": "Major Pentatonic Workout",
+  "description": "Explore the major pentatonic scale across open and movable positions. Bright, country-rock flavored patterns that complement the minor pentatonic.",
+  "category": "scales",
+  "estimatedDurationMinutes": 12,
+  "tags": ["intermediate", "scales", "pentatonic", "technique"],
+  "steps": [
+    {
+      "name": "G Major Pentatonic \u2014 Open",
+      "instructions": "Play the G major pentatonic (G, A, B, D, E) in open position. Ascend from G (3rd fret, 6th string) and descend. One note per beat.\n\nThe major pentatonic has a bright, happy sound compared to its minor cousin.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["G Major Pentatonic - Open"],
+      "notes": "Compare this to Em Pentatonic \u2014 same 5 notes (E, G, A, B, D) but G is the tonal center. Context changes everything."
+    },
+    {
+      "name": "E Major Pentatonic \u2014 Open",
+      "instructions": "Play E major pentatonic (E, F#, G#, B, C#) in open position. Start from open low E. Ascend and descend.\n\nThis scale has a distinctly different feel from E minor pentatonic \u2014 brighter and more uplifting.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["E Major Pentatonic - Open"],
+      "notes": "Notice the G# and C# \u2014 these are the notes that make it sound 'major' compared to Em pentatonic's G and C natural."
+    },
+    {
+      "name": "C Major Pentatonic \u2014 Open",
+      "instructions": "Play C major pentatonic (C, D, E, G, A) in open position. Start from C (3rd fret, 5th string). Ascend and descend.\n\nThis is the same set of notes as Am pentatonic, but emphasizing C as the root changes the sound completely.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["C Major Pentatonic - Open"],
+      "notes": "Try starting and ending your runs on C to hear the major tonality. Same notes as Am pentatonic but a totally different vibe."
+    },
+    {
+      "name": "A Major Pentatonic \u2014 Position 1",
+      "instructions": "Play A major pentatonic (A, B, C#, E, F#) in the movable box shape at the 4th\u20137th fret area. Root is at fret 5 on the 6th string. Ascend and descend.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["A Major Pentatonic - Pos 1"],
+      "notes": "This movable shape is the major pentatonic equivalent of the minor pentatonic box 1. Learn to see both shapes from the same root."
+    },
+    {
+      "name": "D Major Pentatonic \u2014 Position 1",
+      "instructions": "Play D major pentatonic (D, E, F#, A, B) with the movable shape rooted at fret 10 on the 6th string. Same shape as A major pentatonic, shifted up 5 frets. Ascend and descend.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["D Major Pentatonic - Pos 1"],
+      "notes": "Common in country, southern rock, and pop. Think of the intro lick from 'Sweet Home Alabama' \u2014 that's D and C major pentatonics."
+    },
+    {
+      "name": "C Major Pentatonic \u2014 Position 1",
+      "instructions": "Play C major pentatonic with the movable shape rooted at fret 8 on the 6th string. Compare this higher-position sound to the open position you played earlier. Ascend and descend.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["C Major Pentatonic - Pos 1"],
+      "notes": "Same notes as the open C major pentatonic, but an octave higher and in a compact box shape. Great for soloing over C or Am."
+    }
+  ]
+}

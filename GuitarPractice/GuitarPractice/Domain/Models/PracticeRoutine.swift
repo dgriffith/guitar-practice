@@ -96,10 +96,12 @@ struct PracticeStep: Identifiable, Codable, Hashable {
     let images: [String]?
     let chords: [String]?
     let measuresPerChord: Int?
+    let scales: [String]?
 
     init(id: UUID = UUID(), name: String, instructions: String,
          duration: TimeInterval?, metronome: MetronomeConfig?, notes: String?,
-         images: [String]? = nil, chords: [String]? = nil, measuresPerChord: Int? = nil) {
+         images: [String]? = nil, chords: [String]? = nil, measuresPerChord: Int? = nil,
+         scales: [String]? = nil) {
         self.id = id
         self.name = name
         self.instructions = instructions
@@ -109,24 +111,27 @@ struct PracticeStep: Identifiable, Codable, Hashable {
         self.images = images
         self.chords = chords
         self.measuresPerChord = measuresPerChord
+        self.scales = scales
     }
 
     var isTimed: Bool { duration != nil }
     var hasMetronome: Bool { metronome != nil }
     var hasChords: Bool { !(chords?.isEmpty ?? true) }
     var hasImages: Bool { !(images?.isEmpty ?? true) }
+    var hasScales: Bool { !(scales?.isEmpty ?? true) }
 
     func withMetronome(_ newConfig: MetronomeConfig?) -> PracticeStep {
         PracticeStep(id: id, name: name, instructions: instructions,
                      duration: duration, metronome: newConfig, notes: notes,
-                     images: images, chords: chords, measuresPerChord: measuresPerChord)
+                     images: images, chords: chords, measuresPerChord: measuresPerChord,
+                     scales: scales)
     }
 }
 
 extension PracticeStep {
     enum CodingKeys: String, CodingKey {
         case id, name, instructions, duration, metronome, notes
-        case images, chords, measuresPerChord
+        case images, chords, measuresPerChord, scales
     }
 
     init(from decoder: Decoder) throws {
@@ -140,6 +145,7 @@ extension PracticeStep {
         self.images = try container.decodeIfPresent([String].self, forKey: .images)
         self.chords = try container.decodeIfPresent([String].self, forKey: .chords)
         self.measuresPerChord = try container.decodeIfPresent(Int.self, forKey: .measuresPerChord)
+        self.scales = try container.decodeIfPresent([String].self, forKey: .scales)
     }
 }
 

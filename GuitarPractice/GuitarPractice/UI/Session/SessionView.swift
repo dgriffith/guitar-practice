@@ -86,7 +86,8 @@ struct SessionView: View {
                         notes: viewModel.notes,
                         chords: viewModel.chords,
                         currentChordIndex: viewModel.currentChordIndex,
-                        images: viewModel.images
+                        images: viewModel.images,
+                        scales: viewModel.scales
                     )
                     .padding(Theme.largeSpacing)
 

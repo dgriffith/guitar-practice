@@ -7,6 +7,7 @@ struct StepView: View {
     let chords: [String]?
     let currentChordIndex: Int
     let images: [String]?
+    let scales: [String]?
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.largeSpacing) {
@@ -19,6 +20,11 @@ struct StepView: View {
                     // Chord progression display
                     if let chords, !chords.isEmpty {
                         chordProgressionView(chords: chords)
+                    }
+
+                    // Scale diagram display
+                    if let scales, !scales.isEmpty {
+                        scaleDisplayView(scales: scales)
                     }
 
                     // Image display
@@ -73,6 +79,27 @@ struct StepView: View {
         .frame(maxWidth: .infinity)
         .padding(.vertical, Theme.spacing)
         .background(Color.secondary.opacity(0.05))
+        .clipShape(RoundedRectangle(cornerRadius: Theme.largeCornerRadius))
+    }
+
+    // MARK: - Scale Display
+
+    @ViewBuilder
+    private func scaleDisplayView(scales: [String]) -> some View {
+        VStack(spacing: Theme.mediumSpacing) {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: Theme.largeSpacing) {
+                    ForEach(scales, id: \.self) { scale in
+                        ScaleDiagramView(scaleName: scale, isActive: true)
+                    }
+                }
+                .padding(.horizontal, Theme.mediumSpacing)
+                .padding(.vertical, Theme.spacing)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, Theme.spacing)
+        .background(Color.purple.opacity(0.05))
         .clipShape(RoundedRectangle(cornerRadius: Theme.largeCornerRadius))
     }
 

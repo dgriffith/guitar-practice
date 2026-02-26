@@ -1,0 +1,113 @@
+{
+  "name": "Major Scales \u2014 Circle of Fifths",
+  "description": "Work through major scales following the circle of fifths. Open position keys first, then movable shapes for flat keys.",
+  "category": "scales",
+  "estimatedDurationMinutes": 16,
+  "tags": ["intermediate", "scales", "theory", "technique"],
+  "steps": [
+    {
+      "name": "C Major \u2014 Open Position",
+      "instructions": "Play the C major scale in open position. Ascend from C (3rd fret, 5th string) to the highest note available, then descend. One note per beat, strict alternate picking.\n\nC major has no sharps or flats \u2014 all natural notes.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["C Major - Open"],
+      "notes": "Key signature: no sharps, no flats. The starting point for the circle of fifths."
+    },
+    {
+      "name": "G Major \u2014 Open Position",
+      "instructions": "Play the G major scale in open position. Ascend from G (3rd fret, 6th string) through to high G (3rd fret, 1st string) and back down. One note per beat.\n\nG major has one sharp: F#.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["G Major - Open"],
+      "notes": "Key signature: F#. Every F you play becomes F#."
+    },
+    {
+      "name": "D Major \u2014 Open Position",
+      "instructions": "Play the D major scale in open position. Start from open D (4th string) and ascend through the pattern, then descend. One note per beat.\n\nD major has two sharps: F# and C#.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["D Major - Open"],
+      "notes": "Key signature: F#, C#. Watch for C# on the 5th and 2nd strings."
+    },
+    {
+      "name": "A Major \u2014 Open Position",
+      "instructions": "Play the A major scale in open position. Start from open A (5th string) and ascend through the full pattern, then descend. One note per beat.\n\nA major has three sharps: F#, C#, G#.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["A Major - Open"],
+      "notes": "Key signature: F#, C#, G#. Notice G# appears on the 3rd and 1st strings at fret 1 and 4."
+    },
+    {
+      "name": "E Major \u2014 Open Position",
+      "instructions": "Play the E major scale in open position. Start from open low E (6th string) for a deep, full sound. Ascend and descend. One note per beat.\n\nE major has four sharps: F#, C#, G#, D#.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["E Major - Open"],
+      "notes": "Key signature: F#, C#, G#, D#. D# shows up on the 4th and 2nd strings."
+    },
+    {
+      "name": "F Major \u2014 Open Position",
+      "instructions": "Play the F major scale in open position. Start from F (1st fret, 6th string). Notice the Bb \u2014 this is the first flat key in the circle.\n\nF major has one flat: Bb.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 70,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["F Major - Open"],
+      "notes": "Key signature: Bb. The B string plays Bb at fret 1 (5th string) and stays open on the 2nd string only for B natural \u2014 wait, there is no B natural in F major! Use C (fret 1) instead."
+    },
+    {
+      "name": "Bb Major \u2014 Position 1",
+      "instructions": "Play Bb major using the movable pattern rooted at the 6th fret on the 6th string. This is the same shape you'd use for any major scale with the root on the 6th string. Ascend and descend. One note per beat.\n\nBb major has two flats: Bb, Eb.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Bb Major - Pos 1"],
+      "notes": "Key signature: Bb, Eb. This movable shape works for any major key \u2014 just shift the root."
+    },
+    {
+      "name": "Eb Major \u2014 Position 1",
+      "instructions": "Play Eb major using the same movable shape, now rooted at the 11th fret on the 6th string. Same pattern as Bb major, just shifted up 5 frets. Ascend and descend.\n\nEb major has three flats: Bb, Eb, Ab.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 65,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "scales": ["Eb Major - Pos 1"],
+      "notes": "Key signature: Bb, Eb, Ab. The movable shape is identical to Bb major \u2014 only the position changes."
+    }
+  ]
+}

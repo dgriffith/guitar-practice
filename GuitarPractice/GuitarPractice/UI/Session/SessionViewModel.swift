@@ -34,6 +34,8 @@ class SessionViewModel {
     var hasChords: Bool { session.currentStep.hasChords }
     var images: [String]? { session.currentStep.images }
     var hasImages: Bool { session.currentStep.hasImages }
+    var scales: [String]? { session.currentStep.scales }
+    var hasScales: Bool { session.currentStep.hasScales }
 
     var currentChordIndex: Int {
         guard let chords = session.currentStep.chords, !chords.isEmpty else { return 0 }

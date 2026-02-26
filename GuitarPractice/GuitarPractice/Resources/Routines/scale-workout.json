@@ -15,6 +15,7 @@
         "accentDownbeat": true,
         "subdivisions": 1
       },
+      "scales": ["Am Pentatonic - Pos 1"],
       "notes": "Fingers: index on 5th fret, ring on 7th fret (pinky on 8th where needed)."
     },
     {
@@ -27,6 +28,7 @@
         "accentDownbeat": true,
         "subdivisions": 2
       },
+      "scales": ["Am Pentatonic - Pos 1"],
       "notes": null
     },
     {
@@ -39,6 +41,7 @@
         "accentDownbeat": true,
         "subdivisions": 1
       },
+      "scales": ["G Major - Open"],
       "notes": "Know your sharps: F# is the only sharp in G major."
     },
     {
