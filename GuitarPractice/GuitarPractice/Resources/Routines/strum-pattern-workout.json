@@ -1,0 +1,190 @@
+{
+  "name": "Strum Pattern Workout",
+  "description": "A dozen essential strum patterns covering 4/4 and 3/4 time, straight and swing feels, clean and muted techniques.",
+  "category": "strumming",
+  "estimatedDurationMinutes": 16,
+  "tags": ["intermediate", "strumming", "rhythm", "swing"],
+  "steps": [
+    {
+      "name": "Quarter Note Downs",
+      "instructions": "The foundation of all strumming. Strum down on every beat with a relaxed wrist. Focus on even volume across all strings and a consistent tempo. Switch chords every two measures.",
+      "duration": 60,
+      "metronome": {
+        "bpm": 60,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "Slow and steady. This is your warmup — focus on clean chord changes on beat 1.",
+      "chords": ["Am", "G"],
+      "measuresPerChord": 2,
+      "strumPattern": "DDDD"
+    },
+    {
+      "name": "Steady Eighth Notes",
+      "instructions": "Down on the beat, up on the 'and'. Your arm swings like a pendulum — it never stops moving. Keep the motion smooth and even between down and up strokes.",
+      "duration": 60,
+      "metronome": {
+        "bpm": 72,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "Every slot is strummed — no gaps. This builds the arm motion that all other patterns depend on.",
+      "chords": ["G", "C"],
+      "measuresPerChord": 2,
+      "strumPattern": "DUDUDUDU"
+    },
+    {
+      "name": "Classic Folk Strum",
+      "instructions": "The most common strum pattern in popular music: D . D U . U D U (1, 2 &, & 4 &). Your arm still moves on every eighth note — you just miss the strings on beats 1& and 3. Think of it as 'removing' strums from the full eighth-note pattern.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 80,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "The secret is the missing beat 3. Your arm goes down but doesn't touch the strings.",
+      "chords": ["G", "Em", "C", "D"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Pop Rock Drive",
+      "instructions": "A driving pattern that accents beats 1 and 1&: D D . U D U . U. The two quick downs at the start give it energy, while the rests on 2 and 4 create space. Common in pop-rock and singer-songwriter music.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 85,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "The double down at the start (D D) is the signature of this pattern. Make those two strums crisp.",
+      "chords": ["C", "G", "Am", "F"],
+      "measuresPerChord": 1,
+      "strumPattern": "DD.UDU.U"
+    },
+    {
+      "name": "Reggae Offbeat",
+      "instructions": "Strum ONLY on the offbeats (the 'ands'). Rest on every downbeat. This is the classic reggae 'skank'. Use short, clipped upstrokes — lift your fretting hand slightly right after each strum to mute the strings.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 80,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "The click on the downbeat is your rest. Strum only when you hear silence between clicks.",
+      "chords": ["Am", "Dm"],
+      "measuresPerChord": 2,
+      "strumPattern": ".U.U.U.U"
+    },
+    {
+      "name": "Muted Funk",
+      "instructions": "Alternate between clean down strums and muted (ghost) up strums. On the muted strums, lightly release fretting pressure so the strings produce a percussive 'chk' sound. This creates a tight, rhythmic groove.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 90,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "The muted strums are quieter but just as important. They're the glue that holds the groove together.",
+      "chords": ["E", "Am"],
+      "measuresPerChord": 2,
+      "strumPattern": "DuDuDuDu"
+    },
+    {
+      "name": "Funky Ghost Notes",
+      "instructions": "A more complex funk pattern: clean down on 1, muted up on 1&, rest on 2, muted up on 2&, then repeat. The rests create a syncopated, bouncy feel. Keep your strumming arm moving constantly.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 85,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "This pattern is all about dynamics. The clean strums pop out against the ghost notes.",
+      "chords": ["Am"],
+      "strumPattern": "Du.uDu.u"
+    },
+    {
+      "name": "Punk Downstrokes",
+      "instructions": "All downstrokes on every eighth note at high speed. This is physically demanding — it builds right-hand endurance. Keep your wrist loose and don't tense your forearm. If your arm burns, you're gripping too hard.",
+      "duration": 60,
+      "metronome": {
+        "bpm": 140,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "Speed comes from the wrist, not the elbow. Small, quick motions. Drop the BPM if you tense up.",
+      "chords": ["E", "A", "D", "A"],
+      "measuresPerChord": 1,
+      "strumPattern": "DDDDDDDD"
+    },
+    {
+      "name": "Blues Shuffle",
+      "instructions": "The classic folk strum pattern with a swing feel. The 'and' beats come late, creating a triplet-based shuffle groove. Don't try to force the swing — let the metronome guide you. It should feel lazy and relaxed.",
+      "duration": 120,
+      "metronome": {
+        "bpm": 80,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2,
+        "swing": 0.67
+      },
+      "notes": "Swing = the 'and' beats are delayed. Think 'da-dum, da-dum' instead of 'da-da, da-da'. Listen to the metronome's uneven eighth notes.",
+      "chords": ["A", "D", "E"],
+      "measuresPerChord": 2,
+      "strumPattern": "D.UD.UDU"
+    },
+    {
+      "name": "Swing Country",
+      "instructions": "Same pattern as the Classic Folk Strum, but with a light swing (62%). This subtle shuffle transforms a straight folk strum into a country groove. Compare this to step 3 — same arm motion, completely different feel.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 100,
+        "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2,
+        "swing": 0.62
+      },
+      "notes": "Light swing (62%) is subtle — the offbeats are only slightly late. This is the feel behind most country and rockabilly music.",
+      "chords": ["G", "C", "D"],
+      "measuresPerChord": 2,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Waltz Strum",
+      "instructions": "Three beats per measure: a strong beat 1 followed by lighter beats on 2 and 3. Accent the first beat of each measure. This is the foundation of all 3/4 time playing — waltzes, many ballads, and folk songs.",
+      "duration": 60,
+      "metronome": {
+        "bpm": 90,
+        "timeSignature": { "beatsPerMeasure": 3, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 1
+      },
+      "notes": "Feel the 'ONE two three, ONE two three' pulse. Beat 1 is the anchor.",
+      "chords": ["Am", "G", "C"],
+      "measuresPerChord": 2,
+      "strumPattern": "DDD"
+    },
+    {
+      "name": "Waltz Folk Pattern",
+      "instructions": "A 3/4 pattern with eighth notes: D . D U D U. Down on 1, skip 1&, then down-up on beats 2 and 3. This gives the waltz more momentum and flow — common in folk, Celtic, and country waltz styles.",
+      "duration": 90,
+      "metronome": {
+        "bpm": 80,
+        "timeSignature": { "beatsPerMeasure": 3, "beatUnit": 4 },
+        "accentDownbeat": true,
+        "subdivisions": 2
+      },
+      "notes": "The rest on 1& creates a brief pause that makes beat 2 feel like it 'falls' in. This is what gives folk waltzes their lilting quality.",
+      "chords": ["G", "Em", "C", "D"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DUDU"
+    }
+  ]
+}

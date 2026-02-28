@@ -17,7 +17,8 @@
       },
       "notes": "Even simple down strums should sound musical. Accent beat 1 slightly.",
       "chords": ["G", "C", "D"],
-      "measuresPerChord": 2
+      "measuresPerChord": 2,
+      "strumPattern": "DDDD"
     },
     {
       "name": "Down-Up Pattern",
@@ -31,7 +32,8 @@
       },
       "notes": "Your arm is a metronome. Down on the beat, up on the 'and'.",
       "chords": ["G", "C"],
-      "measuresPerChord": 2
+      "measuresPerChord": 2,
+      "strumPattern": "DUDUDUDU"
     },
     {
       "name": "Syncopated Pattern",
@@ -46,7 +48,8 @@
       },
       "notes": "This pattern uses a swing feel (67%) — the 'and' beats come slightly late, creating a shuffle groove. This is the most common strumming pattern in popular music.",
       "chords": ["G", "Em", "C", "D"],
-      "measuresPerChord": 1
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
     },
     {
       "name": "Muted Strums (Chucking)",
@@ -59,7 +62,8 @@
         "subdivisions": 1
       },
       "notes": "The muted strum should sound like a crisp 'chk'. Don't lift your fingers completely off the strings.",
-      "chords": ["Am"]
+      "chords": ["Am"],
+      "strumPattern": "DdDd"
     },
     {
       "name": "Apply to a Song",

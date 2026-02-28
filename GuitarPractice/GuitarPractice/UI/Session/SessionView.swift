@@ -9,6 +9,8 @@ struct SessionView: View {
     @State private var showSaveConfirmation = false
     @State private var saveError: String?
     @State private var showingVoiceCommand = false
+    @State private var stepListHeight: CGFloat = 200
+    @State private var dragStartHeight: CGFloat?
 
     var body: some View {
         VStack(spacing: 0) {
@@ -74,9 +76,42 @@ struct SessionView: View {
                     currentStepIndex: viewModel.currentStepIndex,
                     onSelectStep: { viewModel.goToStep($0) }
                 )
-                .frame(minHeight: 150)
+                .frame(height: stepListHeight)
 
-                Divider()
+                // Draggable divider
+                VStack(spacing: 0) {
+                    Divider()
+                    HStack {
+                        Spacer()
+                        RoundedRectangle(cornerRadius: 1.5)
+                            .fill(Color.secondary.opacity(0.4))
+                            .frame(width: 36, height: 3)
+                        Spacer()
+                    }
+                    .padding(.vertical, 3)
+                    Divider()
+                }
+                .contentShape(Rectangle())
+                .onHover { hovering in
+                    if hovering {
+                        NSCursor.resizeUpDown.push()
+                    } else {
+                        NSCursor.pop()
+                    }
+                }
+                .gesture(
+                    DragGesture(minimumDistance: 1)
+                        .onChanged { value in
+                            if dragStartHeight == nil {
+                                dragStartHeight = stepListHeight
+                            }
+                            let newHeight = (dragStartHeight ?? stepListHeight) + value.translation.height
+                            stepListHeight = max(100, min(newHeight, 500))
+                        }
+                        .onEnded { _ in
+                            dragStartHeight = nil
+                        }
+                )
 
                 // Current step detail
                 ZStack {
@@ -87,7 +122,12 @@ struct SessionView: View {
                         chords: viewModel.chords,
                         currentChordIndex: viewModel.currentChordIndex,
                         images: viewModel.images,
-                        scales: viewModel.scales
+                        scales: viewModel.scales,
+                        strumPattern: viewModel.strumPattern,
+                        currentRawBeat: viewModel.rawBeat,
+                        isMetronomePlaying: viewModel.isMetronomePlaying,
+                        beatsPerMeasure: viewModel.beatsPerMeasure,
+                        subdivisions: viewModel.currentSubdivisions
                     )
                     .padding(Theme.largeSpacing)
 
@@ -95,7 +135,7 @@ struct SessionView: View {
                         countdownOverlay(remaining: remaining)
                     }
                 }
-                .frame(minHeight: 150)
+                .frame(minHeight: 100)
             }
             .frame(minWidth: 300)
 

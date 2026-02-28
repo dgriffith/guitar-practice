@@ -36,6 +36,11 @@ class SessionViewModel {
     var hasImages: Bool { session.currentStep.hasImages }
     var scales: [String]? { session.currentStep.scales }
     var hasScales: Bool { session.currentStep.hasScales }
+    var strumPattern: String? { session.currentStep.strumPattern }
+    var hasStrumPattern: Bool { session.currentStep.hasStrumPattern }
+    var rawBeat: Int { metronome.currentBeat }
+    var isMetronomePlaying: Bool { metronome.isPlaying }
+    var currentSubdivisions: Int { session.currentStep.metronome?.subdivisions ?? 1 }
 
     var currentChordIndex: Int {
         guard let chords = session.currentStep.chords, !chords.isEmpty else { return 0 }

@@ -8,6 +8,11 @@ struct StepView: View {
     let currentChordIndex: Int
     let images: [String]?
     let scales: [String]?
+    let strumPattern: String?
+    let currentRawBeat: Int
+    let isMetronomePlaying: Bool
+    let beatsPerMeasure: Int
+    let subdivisions: Int
 
     var body: some View {
         VStack(alignment: .leading, spacing: Theme.largeSpacing) {
@@ -20,6 +25,11 @@ struct StepView: View {
                     // Chord progression display
                     if let chords, !chords.isEmpty {
                         chordProgressionView(chords: chords)
+                    }
+
+                    // Strum pattern display
+                    if let strumPattern, !strumPattern.isEmpty {
+                        strumPatternSection(pattern: strumPattern)
                     }
 
                     // Scale diagram display
@@ -101,6 +111,19 @@ struct StepView: View {
         .padding(.vertical, Theme.spacing)
         .background(Color.purple.opacity(0.05))
         .clipShape(RoundedRectangle(cornerRadius: Theme.largeCornerRadius))
+    }
+
+    // MARK: - Strum Pattern
+
+    @ViewBuilder
+    private func strumPatternSection(pattern: String) -> some View {
+        let slot = isMetronomePlaying ? currentRawBeat - 1 : -1
+        StrumPatternView(
+            pattern: pattern,
+            currentSlot: slot,
+            beatsPerMeasure: beatsPerMeasure,
+            subdivisions: subdivisions
+        )
     }
 
     // MARK: - Image Gallery

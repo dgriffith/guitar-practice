@@ -55,6 +55,8 @@
 		A10046 /* minor-scale-circle-of-fifths.json in Resources */ = {isa = PBXBuildFile; fileRef = B10046; };
 		A10047 /* minor-pentatonic-workout.json in Resources */ = {isa = PBXBuildFile; fileRef = B10047; };
 		A10048 /* major-pentatonic-workout.json in Resources */ = {isa = PBXBuildFile; fileRef = B10048; };
+		A10049 /* StrumPatternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10049; };
+		A10050 /* strum-pattern-workout.json in Resources */ = {isa = PBXBuildFile; fileRef = B10050; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +110,8 @@
 		B10046 /* minor-scale-circle-of-fifths.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "minor-scale-circle-of-fifths.json"; sourceTree = "<group>"; };
 		B10047 /* minor-pentatonic-workout.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "minor-pentatonic-workout.json"; sourceTree = "<group>"; };
 		B10048 /* major-pentatonic-workout.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "major-pentatonic-workout.json"; sourceTree = "<group>"; };
+		B10049 /* StrumPatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrumPatternView.swift; sourceTree = "<group>"; };
+		B10050 /* strum-pattern-workout.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "strum-pattern-workout.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +244,7 @@
 				B10021 /* Theme.swift */,
 				B10032 /* ChordDiagramView.swift */,
 				B10044 /* ScaleDiagramView.swift */,
+				B10049 /* StrumPatternView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -293,6 +298,7 @@
 				B10046 /* minor-scale-circle-of-fifths.json */,
 				B10047 /* minor-pentatonic-workout.json */,
 				B10048 /* major-pentatonic-workout.json */,
+				B10050 /* strum-pattern-workout.json */,
 			);
 			path = Routines;
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 				A10046 /* minor-scale-circle-of-fifths.json in Resources */,
 				A10047 /* minor-pentatonic-workout.json in Resources */,
 				A10048 /* major-pentatonic-workout.json in Resources */,
+				A10050 /* strum-pattern-workout.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +436,7 @@
 				A10041 /* TunerIndicatorView.swift in Sources */,
 				A10043 /* ScaleLibrary.swift in Sources */,
 				A10044 /* ScaleDiagramView.swift in Sources */,
+				A10049 /* StrumPatternView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
