@@ -71,7 +71,7 @@ enum ScaleLibrary {
         // MARK: - G Major Open (G, A, B, C, D, E, F#)
 
         "G Major - Open": ScalePosition(
-            frets: [[0, 2, 3], [0, 2, 3], [0, 2], [0, 2], [0, 1, 3], [0, 2, 3]],
+            frets: [[0, 2, 3], [0, 2, 3], [0, 2, 4], [0, 2, 4], [0, 1, 3], [0, 2, 3]],
             roots: [[3], [], [], [0], [], [3]],
             startFret: 0
         ),
