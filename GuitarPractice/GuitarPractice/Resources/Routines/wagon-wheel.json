@@ -1,0 +1,69 @@
+{
+  "name": "Wagon Wheel — Section Drill",
+  "description": "Drill each section of 'Wagon Wheel' with extended time to lock in the chord changes and strum pattern. The full progression is G D Em C | G D C C at 150 BPM.",
+  "category": "songs",
+  "estimatedDurationMinutes": 8,
+  "tags": ["beginner", "folk", "country", "songs", "strumming"],
+  "artist": "Old Crow Medicine Show",
+  "key": "G Major",
+  "capo": null,
+  "youtubeURL": "https://www.youtube.com/watch?v=hvKyBcCDOB4",
+  "sectionPauseDuration": 3,
+  "steps": [
+    {
+      "name": "Intro",
+      "sectionType": "intro",
+      "instructions": "Strum the full 8-bar progression: G D Em C | G D C C. One measure per chord. This sets up the feel for the whole song — keep it relaxed and steady.",
+      "duration": 60,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "The intro uses the same progression as the rest of the song. Focus on getting the strum pattern locked in before adding vocals. Notice how the second half (G D C C) resolves differently than the first.",
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Verse",
+      "sectionType": "verse",
+      "instructions": "Play the verse progression G D Em C | G D C C. Sing or hum the melody while strumming to build coordination. The vocal rhythm sits on top of the steady strum.",
+      "duration": 120,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "Verse lyrics: 'Headed down south to the land of the pines / I'm thumbin' my way into North Caroline.' The C C at the end gives you a moment to breathe before the next cycle.",
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Chorus",
+      "sectionType": "chorus",
+      "instructions": "Same progression G D Em C | G D C C but with more energy. Strum harder on the downbeats and let the chords ring. This is the big sing-along moment.",
+      "duration": 120,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "Chorus lyrics: 'So rock me mama like a wagon wheel / Rock me mama any way you feel.' Drive the energy up here — dig into the strums.",
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Bridge / Solo",
+      "sectionType": "bridge",
+      "instructions": "The fiddle solo plays over the same G D Em C | G D C C progression. Keep strumming steady — you're the rhythm section here. If you know the melody, try humming it.",
+      "duration": 90,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "In a band context, this is where you lock into a tight groove and let the lead instrument shine. Keep your strumming consistent and rhythmically solid.",
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Outro",
+      "sectionType": "outro",
+      "instructions": "Bring it home with one last pass through G D Em C | G D C C. Gradually let the strumming soften, then end with a single strong downstrum on the final G.",
+      "duration": 60,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "Let the last G chord ring out. In a live setting, you'd hold the final chord and let the audience cheer.",
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    }
+  ]
+}

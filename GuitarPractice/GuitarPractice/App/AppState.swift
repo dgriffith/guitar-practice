@@ -9,16 +9,34 @@ class AppState {
     var sessionLogs: [SessionLog] = []
     var selectedSessionLog: SessionLog?
     var importError: String?
-    var isTunerActive: Bool = false
 
     private let routineLoader = RoutineLoader()
     private let sessionLogStore = SessionLogStore()
-    let tunerEngine = TunerEngine()
 
     var isSessionActive: Bool { activeSession != nil }
 
     func startSession(for routine: PracticeRoutine) {
         activeSession = SessionViewModel(routine: routine)
+        activeSession?.start()
+    }
+
+    func startSectionSession(for routine: PracticeRoutine, stepIndex: Int) {
+        let step = routine.steps[stepIndex]
+        let sectionRoutine = PracticeRoutine(
+            name: "\(routine.name) — \(step.name)",
+            description: "Single-section practice from \(routine.name)",
+            category: routine.category,
+            estimatedDurationMinutes: step.duration.map { Int($0) / 60 },
+            tags: routine.tags,
+            steps: [step],
+            artist: routine.artist,
+            key: routine.key,
+            capo: routine.capo,
+            youtubeURL: routine.youtubeURL,
+            sectionPauseDuration: 0
+        )
+        activeSession = SessionViewModel(routine: sectionRoutine)
+        activeSession?.isLooping = true
         activeSession?.start()
     }
 

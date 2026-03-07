@@ -1,3 +1,4 @@
+import AppKit
 import Foundation
 import Observation
 
@@ -12,6 +13,11 @@ class SessionViewModel {
     private var pausedCountdownRemaining: Int?
     /// BPM overrides per step index. Only contains entries for steps the user adjusted.
     private(set) var bpmOverrides: [Int: Int] = [:]
+
+    // MARK: - Looping & Randomize
+
+    var isLooping: Bool = false
+    var isRandomized: Bool = false
 
     // MARK: - Voice State
 
@@ -38,6 +44,9 @@ class SessionViewModel {
     var hasScales: Bool { session.currentStep.hasScales }
     var strumPattern: String? { session.currentStep.strumPattern }
     var hasStrumPattern: Bool { session.currentStep.hasStrumPattern }
+    var currentSectionType: String? { session.currentStep.sectionType }
+    var youtubeURL: String? { session.routine.youtubeURL }
+    var hasYouTubeLink: Bool { session.routine.hasYouTubeLink }
     var rawBeat: Int { metronome.currentBeat }
     var isMetronomePlaying: Bool { metronome.isPlaying }
     var currentSubdivisions: Int { session.currentStep.metronome?.subdivisions ?? 1 }
@@ -57,7 +66,7 @@ class SessionViewModel {
     var isLastStep: Bool { session.isLastStep }
     var state: SessionState { session.state }
     var routineName: String { session.routine.name }
-    var steps: [PracticeStep] { session.routine.steps }
+    var steps: [PracticeStep] { session.displaySteps }
     var currentStepIndex: Int { session.currentStepIndex }
 
     var hasBPMChanges: Bool { !bpmOverrides.isEmpty }
@@ -126,10 +135,34 @@ class SessionViewModel {
         self.metronome = MetronomeEngine()
         self.soundPlayer = SoundPlayer()
         self.speechRecognizer = SpeechRecognizer()
+        self.isRandomized = routine.randomizeSteps
+
+        if routine.randomizeSteps {
+            session.displaySteps = routine.steps.shuffled()
+        }
 
         speechRecognizer.onCommand = { [weak self] command in
             self?.handleVoiceCommand(command)
         }
+    }
+
+    // MARK: - Randomize
+
+    func toggleRandomize() {
+        stopTimerAndMetronome()
+        isRandomized.toggle()
+        bpmOverrides.removeAll()
+
+        if isRandomized {
+            session.displaySteps = session.routine.steps.shuffled()
+        } else {
+            session.displaySteps = session.routine.steps
+        }
+
+        session.currentStepIndex = 0
+        session.stepElapsedTime = 0
+        session.state = .ready
+        startCurrentStep()
     }
 
     // MARK: - BPM Adjustment
@@ -166,21 +199,24 @@ class SessionViewModel {
         }
     }
 
-    /// Build a modified routine with all BPM overrides applied.
+    /// Build a modified routine with all BPM overrides applied, always in original step order.
     func routineWithBPMChanges() -> PracticeRoutine {
-        let modifiedSteps = session.routine.steps.enumerated().map { index, step in
+        let modifiedSteps = session.displaySteps.enumerated().map { index, step in
             if let overrideBPM = bpmOverrides[index], let config = step.metronome {
                 return step.withMetronome(config.withBPM(overrideBPM))
             }
             return step
         }
-        return session.routine.withSteps(modifiedSteps)
+        // Rebuild in original order by matching step IDs
+        let modifiedByID = Dictionary(uniqueKeysWithValues: modifiedSteps.map { ($0.id, $0) })
+        let orderedSteps = session.routine.steps.map { modifiedByID[$0.id] ?? $0 }
+        return session.routine.withSteps(orderedSteps)
     }
 
     /// Summary of which steps had BPM changes.
     var bpmChangeSummary: [String] {
         bpmOverrides.sorted(by: { $0.key < $1.key }).compactMap { index, newBPM in
-            let step = session.routine.steps[index]
+            let step = session.displaySteps[index]
             guard let original = step.metronome?.bpm else { return nil }
             return "\(step.name): \(original) → \(newBPM) BPM"
         }
@@ -194,6 +230,12 @@ class SessionViewModel {
         } else {
             speechRecognizer.requestPermissionAndStart()
         }
+    }
+
+    func openYouTube() {
+        guard let urlString = session.routine.youtubeURL,
+              let url = URL(string: urlString) else { return }
+        NSWorkspace.shared.open(url)
     }
 
     private func handleVoiceCommand(_ command: VoiceCommand) {
@@ -225,6 +267,8 @@ class SessionViewModel {
             adjustBPM(by: 5)
         case .slower:
             adjustBPM(by: -5)
+        case .loop:
+            isLooping.toggle()
         }
     }
 
@@ -258,6 +302,12 @@ class SessionViewModel {
 
     func nextStep() {
         stopTimerAndMetronome()
+
+        if isLooping {
+            session.stepElapsedTime = 0
+            startCurrentStep()
+            return
+        }
 
         if session.isLastStep {
             session.state = .completed
@@ -309,7 +359,7 @@ class SessionViewModel {
             ? session.totalSteps
             : session.currentStepIndex + 1
 
-        let stepLogs = session.routine.steps.enumerated().map { index, step in
+        let stepLogs = session.displaySteps.enumerated().map { index, step in
             let completed = index < session.currentStepIndex
                 || (index == session.currentStepIndex && session.state == .completed)
             let timeSpent: TimeInterval
@@ -348,11 +398,11 @@ class SessionViewModel {
         if let override = bpmOverrides[stepIndex] {
             return override
         }
-        return session.routine.steps[stepIndex].metronome?.bpm ?? 0
+        return session.displaySteps[stepIndex].metronome?.bpm ?? 0
     }
 
     private func effectiveConfig(for stepIndex: Int) -> MetronomeConfig? {
-        guard let config = session.routine.steps[stepIndex].metronome else { return nil }
+        guard let config = session.displaySteps[stepIndex].metronome else { return nil }
         if let override = bpmOverrides[stepIndex] {
             return config.withBPM(override)
         }
@@ -360,11 +410,17 @@ class SessionViewModel {
     }
 
     private var stepPauseEnabled: Bool {
-        UserDefaults.standard.object(forKey: "stepPauseEnabled") as? Bool ?? true
+        if let routinePause = session.routine.sectionPauseDuration, routinePause == 0 {
+            return false
+        }
+        return UserDefaults.standard.object(forKey: "stepPauseEnabled") as? Bool ?? true
     }
 
     private var stepPauseDuration: Int {
-        UserDefaults.standard.object(forKey: "stepPauseDuration") as? Int ?? 5
+        if let routinePause = session.routine.sectionPauseDuration {
+            return Int(routinePause)
+        }
+        return UserDefaults.standard.object(forKey: "stepPauseDuration") as? Int ?? 5
     }
 
     private func startCurrentStep() {
@@ -478,6 +534,13 @@ class SessionViewModel {
     private func onTimedStepComplete() {
         stopTimer()
         metronome.stop()
+
+        if isLooping {
+            session.stepElapsedTime = 0
+            startCurrentStep()
+            return
+        }
+
         session.state = .stepComplete
         soundPlayer.playStepCompletion()
     }

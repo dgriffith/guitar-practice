@@ -38,9 +38,6 @@
 		A10036 /* SessionLogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10036; };
 		A10037 /* SessionLogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10037; };
 		A10038 /* SessionLogCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10038; };
-		A10039 /* TunerEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10039; };
-		A10040 /* TunerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10040; };
-		A10041 /* TunerIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10041; };
 		A10022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10022; };
 		A10023 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B10023; };
 		A10024 /* beginner-warmup.json in Resources */ = {isa = PBXBuildFile; fileRef = B10024; };
@@ -57,6 +54,8 @@
 		A10048 /* major-pentatonic-workout.json in Resources */ = {isa = PBXBuildFile; fileRef = B10048; };
 		A10049 /* StrumPatternView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10049; };
 		A10050 /* strum-pattern-workout.json in Resources */ = {isa = PBXBuildFile; fileRef = B10050; };
+		A10051 /* wagon-wheel.json in Resources */ = {isa = PBXBuildFile; fileRef = B10051; };
+		A10052 /* wagon-wheel-playalong.json in Resources */ = {isa = PBXBuildFile; fileRef = B10052; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,9 +99,6 @@
 		B10036 /* SessionLogListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLogListView.swift; sourceTree = "<group>"; };
 		B10037 /* SessionLogDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLogDetailView.swift; sourceTree = "<group>"; };
 		B10038 /* SessionLogCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLogCardView.swift; sourceTree = "<group>"; };
-		B10039 /* TunerEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerEngine.swift; sourceTree = "<group>"; };
-		B10040 /* TunerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerView.swift; sourceTree = "<group>"; };
-		B10041 /* TunerIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerIndicatorView.swift; sourceTree = "<group>"; };
 		B10100 /* GuitarPractice.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GuitarPractice.entitlements; sourceTree = "<group>"; };
 		B10043 /* ScaleLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleLibrary.swift; sourceTree = "<group>"; };
 		B10044 /* ScaleDiagramView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleDiagramView.swift; sourceTree = "<group>"; };
@@ -112,6 +108,8 @@
 		B10048 /* major-pentatonic-workout.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "major-pentatonic-workout.json"; sourceTree = "<group>"; };
 		B10049 /* StrumPatternView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrumPatternView.swift; sourceTree = "<group>"; };
 		B10050 /* strum-pattern-workout.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "strum-pattern-workout.json"; sourceTree = "<group>"; };
+		B10051 /* wagon-wheel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "wagon-wheel.json"; sourceTree = "<group>"; };
+		B10052 /* wagon-wheel-playalong.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "wagon-wheel-playalong.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +192,6 @@
 				B10008 /* ClickSoundGenerator.swift */,
 				B10009 /* SoundPlayer.swift */,
 				B10030 /* SpeechRecognizer.swift */,
-				B10039 /* TunerEngine.swift */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -205,7 +202,6 @@
 				G10009 /* Library */,
 				G10010 /* Session */,
 				G10017 /* History */,
-				G10018 /* Tuner */,
 				G10016 /* Settings */,
 				G10011 /* Shared */,
 			);
@@ -257,15 +253,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		G10018 /* Tuner */ = {
-			isa = PBXGroup;
-			children = (
-				B10040 /* TunerView.swift */,
-				B10041 /* TunerIndicatorView.swift */,
-			);
-			path = Tuner;
-			sourceTree = "<group>";
-		};
 		G10017 /* History */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +286,8 @@
 				B10047 /* minor-pentatonic-workout.json */,
 				B10048 /* major-pentatonic-workout.json */,
 				B10050 /* strum-pattern-workout.json */,
+				B10051 /* wagon-wheel.json */,
+				B10052 /* wagon-wheel-playalong.json */,
 			);
 			path = Routines;
 			sourceTree = "<group>";
@@ -390,6 +379,8 @@
 				A10047 /* minor-pentatonic-workout.json in Resources */,
 				A10048 /* major-pentatonic-workout.json in Resources */,
 				A10050 /* strum-pattern-workout.json in Resources */,
+				A10051 /* wagon-wheel.json in Resources */,
+				A10052 /* wagon-wheel-playalong.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,9 +422,6 @@
 				A10036 /* SessionLogListView.swift in Sources */,
 				A10037 /* SessionLogDetailView.swift in Sources */,
 				A10038 /* SessionLogCardView.swift in Sources */,
-				A10039 /* TunerEngine.swift in Sources */,
-				A10040 /* TunerView.swift in Sources */,
-				A10041 /* TunerIndicatorView.swift in Sources */,
 				A10043 /* ScaleLibrary.swift in Sources */,
 				A10044 /* ScaleDiagramView.swift in Sources */,
 				A10049 /* StrumPatternView.swift in Sources */,
@@ -574,7 +562,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "GuitarPractice needs microphone access for voice commands and the chromatic tuner.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "GuitarPractice needs microphone access for voice commands.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "GuitarPractice uses speech recognition for hands-free voice commands during practice sessions.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -603,7 +591,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "GuitarPractice needs microphone access for voice commands and the chromatic tuner.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "GuitarPractice needs microphone access for voice commands.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "GuitarPractice uses speech recognition for hands-free voice commands during practice sessions.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

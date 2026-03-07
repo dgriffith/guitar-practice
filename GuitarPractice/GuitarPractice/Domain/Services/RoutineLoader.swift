@@ -74,7 +74,9 @@ class RoutineLoader {
         let imported = PracticeRoutine(
             name: decoded.name, description: decoded.description,
             category: decoded.category, estimatedDurationMinutes: decoded.estimatedDurationMinutes,
-            tags: decoded.tags, steps: decoded.steps
+            tags: decoded.tags, steps: decoded.steps,
+            artist: decoded.artist, key: decoded.key, capo: decoded.capo,
+            youtubeURL: decoded.youtubeURL, sectionPauseDuration: decoded.sectionPauseDuration
         )
         try saveRoutine(imported)
         return imported

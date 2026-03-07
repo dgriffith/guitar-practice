@@ -1,0 +1,113 @@
+{
+  "name": "Wagon Wheel — Play Along",
+  "description": "Play through 'Wagon Wheel' at actual song length and tempo. Sections are timed to match the real arrangement — hit play and strum along from intro to outro.",
+  "category": "songs",
+  "estimatedDurationMinutes": 4,
+  "tags": ["beginner", "folk", "country", "songs", "strumming", "play-along"],
+  "artist": "Old Crow Medicine Show",
+  "key": "G Major",
+  "capo": null,
+  "youtubeURL": "https://www.youtube.com/watch?v=hvKyBcCDOB4",
+  "sectionPauseDuration": 0,
+  "steps": [
+    {
+      "name": "Intro",
+      "sectionType": "intro",
+      "instructions": "Strum the 8-bar progression to set the feel: G D Em C | G D C C.",
+      "duration": 13,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "One pass through the progression. Establish the groove.",
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Verse 1",
+      "sectionType": "verse",
+      "instructions": "'Headed down south to the land of the pines...' Two passes through the progression.",
+      "duration": 26,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "Sing while strumming. The vocal rhythm is independent of the strum pattern.",
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Chorus 1",
+      "sectionType": "chorus",
+      "instructions": "'So rock me mama like a wagon wheel...' Push the energy up. Two passes.",
+      "duration": 26,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "Dig into the strums — this is the big sing-along.",
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Verse 2",
+      "sectionType": "verse",
+      "instructions": "'Running from the cold up in New England...' Same progression, same energy as verse 1.",
+      "duration": 26,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": null,
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Chorus 2",
+      "sectionType": "chorus",
+      "instructions": "'So rock me mama like a wagon wheel...' Same chorus — belt it out.",
+      "duration": 26,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": null,
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Bridge / Solo",
+      "sectionType": "bridge",
+      "instructions": "Fiddle solo over the same changes. Keep the rhythm tight and steady.",
+      "duration": 26,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "You're the rhythm section here — lock in the groove.",
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Verse 3",
+      "sectionType": "verse",
+      "instructions": "'Walkin' to the south out of Roanoke...' Last verse — bring it home.",
+      "duration": 26,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": null,
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Final Chorus",
+      "sectionType": "chorus",
+      "instructions": "'So rock me mama like a wagon wheel...' Last chorus — give it everything.",
+      "duration": 26,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "Big finish energy. Strum with conviction.",
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Outro",
+      "sectionType": "outro",
+      "instructions": "One last pass. Let the strumming taper off and end with a strong G.",
+      "duration": 13,
+      "metronome": { "bpm": 150, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "Let the final G ring out.",
+      "chords": ["G", "D", "Em", "C", "G", "D", "C", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    }
+  ]
+}

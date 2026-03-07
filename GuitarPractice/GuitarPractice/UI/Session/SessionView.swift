@@ -25,6 +25,49 @@ struct SessionView: View {
                 // Voice command indicator
                 voiceIndicator
 
+                // Section type label
+                if let sectionType = viewModel.currentSectionType {
+                    Text(sectionType.capitalized)
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 3)
+                        .background(sectionColor(sectionType).opacity(0.2))
+                        .foregroundStyle(sectionColor(sectionType))
+                        .clipShape(Capsule())
+                }
+
+                // Loop toggle
+                Button(action: { viewModel.isLooping.toggle() }) {
+                    Image(systemName: viewModel.isLooping ? "repeat.1" : "repeat")
+                        .font(.body)
+                        .foregroundStyle(viewModel.isLooping ? .orange : .secondary)
+                }
+                .buttonStyle(.plain)
+                .keyboardShortcut("l", modifiers: [])
+                .help(viewModel.isLooping ? "Looping current section (L)" : "Loop current section (L)")
+
+                // Shuffle toggle
+                Button(action: { viewModel.toggleRandomize() }) {
+                    Image(systemName: "shuffle")
+                        .font(.body)
+                        .foregroundStyle(viewModel.isRandomized ? .blue : .secondary)
+                }
+                .buttonStyle(.plain)
+                .keyboardShortcut("s", modifiers: [.command, .shift])
+                .help(viewModel.isRandomized ? "Shuffled — click to restore original order" : "Shuffle step order")
+
+                // YouTube link
+                if viewModel.hasYouTubeLink {
+                    Button(action: { viewModel.openYouTube() }) {
+                        Image(systemName: "play.rectangle.fill")
+                            .font(.body)
+                            .foregroundStyle(.red)
+                    }
+                    .buttonStyle(.plain)
+                    .help("Open YouTube link")
+                }
+
                 Button(action: { confirmExit() }) {
                     Image(systemName: "xmark.circle")
                         .font(.title3)
@@ -321,6 +364,17 @@ struct SessionView: View {
             }
         } else {
             showExitConfirmation = true
+        }
+    }
+
+    private func sectionColor(_ sectionType: String) -> Color {
+        switch sectionType.lowercased() {
+        case "intro": .blue
+        case "verse": .green
+        case "chorus": .orange
+        case "bridge", "solo": .purple
+        case "outro": .teal
+        default: .secondary
         }
     }
 }

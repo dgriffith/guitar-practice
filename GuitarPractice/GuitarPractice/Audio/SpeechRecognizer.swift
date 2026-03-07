@@ -13,6 +13,7 @@ enum VoiceCommand: String, CaseIterable {
     case back
     case faster
     case slower
+    case loop
 
     /// All words that should trigger this command.
     var triggerWords: [String] {
@@ -24,6 +25,7 @@ enum VoiceCommand: String, CaseIterable {
         case .restart: ["restart", "again", "repeat"]
         case .faster: ["faster", "fast", "speed up", "quicker"]
         case .slower: ["slower", "slow", "slow down"]
+        case .loop: ["loop"]
         }
     }
 

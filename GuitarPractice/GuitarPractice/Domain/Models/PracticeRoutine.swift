@@ -98,11 +98,12 @@ struct PracticeStep: Identifiable, Codable, Hashable {
     let measuresPerChord: Int?
     let scales: [String]?
     let strumPattern: String?
+    let sectionType: String?
 
     init(id: UUID = UUID(), name: String, instructions: String,
          duration: TimeInterval?, metronome: MetronomeConfig?, notes: String?,
          images: [String]? = nil, chords: [String]? = nil, measuresPerChord: Int? = nil,
-         scales: [String]? = nil, strumPattern: String? = nil) {
+         scales: [String]? = nil, strumPattern: String? = nil, sectionType: String? = nil) {
         self.id = id
         self.name = name
         self.instructions = instructions
@@ -114,6 +115,7 @@ struct PracticeStep: Identifiable, Codable, Hashable {
         self.measuresPerChord = measuresPerChord
         self.scales = scales
         self.strumPattern = strumPattern
+        self.sectionType = sectionType
     }
 
     var isTimed: Bool { duration != nil }
@@ -122,19 +124,20 @@ struct PracticeStep: Identifiable, Codable, Hashable {
     var hasImages: Bool { !(images?.isEmpty ?? true) }
     var hasScales: Bool { !(scales?.isEmpty ?? true) }
     var hasStrumPattern: Bool { !(strumPattern?.isEmpty ?? true) }
+    var hasSectionType: Bool { !(sectionType?.isEmpty ?? true) }
 
     func withMetronome(_ newConfig: MetronomeConfig?) -> PracticeStep {
         PracticeStep(id: id, name: name, instructions: instructions,
                      duration: duration, metronome: newConfig, notes: notes,
                      images: images, chords: chords, measuresPerChord: measuresPerChord,
-                     scales: scales, strumPattern: strumPattern)
+                     scales: scales, strumPattern: strumPattern, sectionType: sectionType)
     }
 }
 
 extension PracticeStep {
     enum CodingKeys: String, CodingKey {
         case id, name, instructions, duration, metronome, notes
-        case images, chords, measuresPerChord, scales, strumPattern
+        case images, chords, measuresPerChord, scales, strumPattern, sectionType
     }
 
     init(from decoder: Decoder) throws {
@@ -150,6 +153,7 @@ extension PracticeStep {
         self.measuresPerChord = try container.decodeIfPresent(Int.self, forKey: .measuresPerChord)
         self.scales = try container.decodeIfPresent([String].self, forKey: .scales)
         self.strumPattern = try container.decodeIfPresent(String.self, forKey: .strumPattern)
+        self.sectionType = try container.decodeIfPresent(String.self, forKey: .sectionType)
     }
 }
 
@@ -163,9 +167,18 @@ struct PracticeRoutine: Identifiable, Codable, Hashable {
     let estimatedDurationMinutes: Int?
     let tags: [String]
     let steps: [PracticeStep]
+    let artist: String?
+    let key: String?
+    let capo: Int?
+    let youtubeURL: String?
+    let sectionPauseDuration: Double?
+    let randomizeSteps: Bool
 
     init(id: UUID = UUID(), name: String, description: String, category: RoutineCategory,
-         estimatedDurationMinutes: Int?, tags: [String], steps: [PracticeStep]) {
+         estimatedDurationMinutes: Int?, tags: [String], steps: [PracticeStep],
+         artist: String? = nil, key: String? = nil, capo: Int? = nil,
+         youtubeURL: String? = nil, sectionPauseDuration: Double? = nil,
+         randomizeSteps: Bool = false) {
         self.id = id
         self.name = name
         self.description = description
@@ -173,6 +186,12 @@ struct PracticeRoutine: Identifiable, Codable, Hashable {
         self.estimatedDurationMinutes = estimatedDurationMinutes
         self.tags = tags
         self.steps = steps
+        self.artist = artist
+        self.key = key
+        self.capo = capo
+        self.youtubeURL = youtubeURL
+        self.sectionPauseDuration = sectionPauseDuration
+        self.randomizeSteps = randomizeSteps
     }
 
     var totalTimedDuration: TimeInterval {
@@ -189,16 +208,24 @@ struct PracticeRoutine: Identifiable, Codable, Hashable {
         steps.filter { !$0.isTimed }.count
     }
 
+    var isSong: Bool { category == .songs }
+
+    var hasYouTubeLink: Bool { !(youtubeURL?.isEmpty ?? true) }
+
     func withSteps(_ newSteps: [PracticeStep]) -> PracticeRoutine {
         PracticeRoutine(id: id, name: name, description: description,
                         category: category, estimatedDurationMinutes: estimatedDurationMinutes,
-                        tags: tags, steps: newSteps)
+                        tags: tags, steps: newSteps, artist: artist, key: key,
+                        capo: capo, youtubeURL: youtubeURL,
+                        sectionPauseDuration: sectionPauseDuration,
+                        randomizeSteps: randomizeSteps)
     }
 }
 
 extension PracticeRoutine {
     enum CodingKeys: String, CodingKey {
         case id, name, description, category, estimatedDurationMinutes, tags, steps
+        case artist, key, capo, youtubeURL, sectionPauseDuration, randomizeSteps
     }
 
     init(from decoder: Decoder) throws {
@@ -210,5 +237,11 @@ extension PracticeRoutine {
         self.estimatedDurationMinutes = try container.decodeIfPresent(Int.self, forKey: .estimatedDurationMinutes)
         self.tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
         self.steps = try container.decode([PracticeStep].self, forKey: .steps)
+        self.artist = try container.decodeIfPresent(String.self, forKey: .artist)
+        self.key = try container.decodeIfPresent(String.self, forKey: .key)
+        self.capo = try container.decodeIfPresent(Int.self, forKey: .capo)
+        self.youtubeURL = try container.decodeIfPresent(String.self, forKey: .youtubeURL)
+        self.sectionPauseDuration = try container.decodeIfPresent(Double.self, forKey: .sectionPauseDuration)
+        self.randomizeSteps = try container.decodeIfPresent(Bool.self, forKey: .randomizeSteps) ?? false
     }
 }

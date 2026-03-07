@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 struct RoutineDetailView: View {
@@ -29,6 +30,22 @@ struct RoutineDetailView: View {
                     .font(.body)
                     .foregroundStyle(.secondary)
 
+                if routine.isSong {
+                    HStack(spacing: Theme.largeSpacing) {
+                        if let artist = routine.artist {
+                            Label(artist, systemImage: "music.mic")
+                        }
+                        if let key = routine.key {
+                            Label(key, systemImage: "music.note")
+                        }
+                        if let capo = routine.capo, capo > 0 {
+                            Label("Capo \(capo)", systemImage: "guitars")
+                        }
+                    }
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                }
+
                 HStack(spacing: Theme.largeSpacing) {
                     if let duration = routine.estimatedDurationMinutes {
                         Label("\(duration) minutes", systemImage: "clock")
@@ -56,9 +73,22 @@ struct RoutineDetailView: View {
                             .frame(width: 24)
 
                         VStack(alignment: .leading, spacing: 2) {
-                            Text(step.name)
-                                .font(.body)
-                                .fontWeight(.medium)
+                            HStack(spacing: Theme.spacing) {
+                                Text(step.name)
+                                    .font(.body)
+                                    .fontWeight(.medium)
+
+                                if let sectionType = step.sectionType {
+                                    Text(sectionType.capitalized)
+                                        .font(.caption2)
+                                        .fontWeight(.semibold)
+                                        .padding(.horizontal, 6)
+                                        .padding(.vertical, 2)
+                                        .background(sectionColor(sectionType).opacity(0.2))
+                                        .foregroundStyle(sectionColor(sectionType))
+                                        .clipShape(Capsule())
+                                }
+                            }
 
                             HStack(spacing: Theme.spacing) {
                                 if let duration = step.duration {
@@ -80,6 +110,17 @@ struct RoutineDetailView: View {
                         }
 
                         Spacer()
+
+                        if step.hasSectionType {
+                            Button {
+                                appState.startSectionSession(for: routine, stepIndex: index)
+                            } label: {
+                                Label("Practice", systemImage: "repeat.1")
+                                    .font(.caption)
+                            }
+                            .buttonStyle(.bordered)
+                            .controlSize(.small)
+                        }
                     }
                     .padding(.vertical, 4)
                 }
@@ -91,6 +132,19 @@ struct RoutineDetailView: View {
             // Action buttons
             HStack(spacing: Theme.largeSpacing) {
                 Spacer()
+
+                if routine.hasYouTubeLink {
+                    Button {
+                        if let urlString = routine.youtubeURL, let url = URL(string: urlString) {
+                            NSWorkspace.shared.open(url)
+                        }
+                    } label: {
+                        Label("YouTube", systemImage: "play.rectangle.fill")
+                    }
+                    .buttonStyle(.bordered)
+                    .controlSize(.large)
+                    .tint(.red)
+                }
 
                 Button {
                     appState.exportRoutine(routine)
@@ -119,5 +173,16 @@ struct RoutineDetailView: View {
             return "\(mins) min"
         }
         return "\(mins):\(String(format: "%02d", secs))"
+    }
+
+    private func sectionColor(_ sectionType: String) -> Color {
+        switch sectionType.lowercased() {
+        case "intro": .blue
+        case "verse": .green
+        case "chorus": .orange
+        case "bridge", "solo": .purple
+        case "outro": .teal
+        default: .secondary
+        }
     }
 }

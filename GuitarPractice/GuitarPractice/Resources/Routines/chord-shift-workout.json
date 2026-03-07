@@ -1,9 +1,9 @@
 {
   "name": "Chord Shift Workout",
-  "description": "Intensive chord transition practice across multiple keys using open chords, sus voicings, dominant 7ths, and major 7ths. Each step drills a different pair of chords that belong to the same key.",
+  "description": "Intensive chord transition practice across multiple keys using open chords, sus voicings, dominant 7ths, major 7ths, add9s, and Fmaj7. Each step drills a different pair of chords that belong to the same key.",
   "category": "chords",
-  "estimatedDurationMinutes": 20,
-  "tags": ["intermediate", "chords", "transitions", "endurance"],
+  "estimatedDurationMinutes": 23,
+  "tags": ["intermediate", "chords", "transitions", "endurance", "add9"],
   "steps": [
     {
       "name": "Key of C — C to G",
@@ -78,6 +78,33 @@
       "measuresPerChord": 1
     },
     {
+      "name": "Key of C — C to Cadd9",
+      "instructions": "Switch between C and Cadd9 every measure. Just add your pinky to the 3rd fret of the B string — one finger, big difference in color. Listen to how the added 9th (D) opens up the chord.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "Cadd9 is one of the most useful chords in pop/rock. It replaces C in almost any context.",
+      "chords": ["C", "Cadd9"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of C — Am to Fmaj7",
+      "instructions": "Switch between Am and Fmaj7 every measure. Fmaj7 is much easier than a barre F — just leave the high E string open. This vi to IVmaj7 change is everywhere in pop music.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "vi to IVmaj7 in C major. The open E string is the major 7th of F — that's what gives Fmaj7 its dreamy quality.",
+      "chords": ["Am", "Fmaj7"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of C — Fmaj7 to G",
+      "instructions": "Switch between Fmaj7 and G every measure. IVmaj7 to V — a smooth, satisfying change. Both chords use the 2nd and 3rd frets, so your hand doesn't travel far.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "IVmaj7 to V in C major. Try the progression Am - Fmaj7 - G - C in your head as you play these two.",
+      "chords": ["Fmaj7", "G"],
+      "measuresPerChord": 1
+    },
+    {
       "name": "Key of G — G to D",
       "instructions": "Switch between G and D every measure. These are the backbone chords of countless songs in G major.",
       "duration": 30,
@@ -147,6 +174,24 @@
       "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
       "notes": "I to Vsus2 in G major.",
       "chords": ["G", "Dsus2"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of G — G to Gadd9",
+      "instructions": "Switch between G and Gadd9 every measure. The A string goes from fret 2 to open — that's the only difference. The open A is the 9th, giving the chord a jangly, modern sound.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "Gadd9 is a staple of 90s alt-rock and modern worship music. Lift one finger to transform the chord.",
+      "chords": ["G", "Gadd9"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Key of G — Cadd9 to D",
+      "instructions": "Switch between Cadd9 and D every measure. Cadd9 often replaces plain C in the key of G — it shares the open D and G strings with the G chord, creating smooth voice leading.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "IVadd9 to V in G major. Try the full progression: G - Cadd9 - D. This is the sound of a thousand campfire songs.",
+      "chords": ["Cadd9", "D"],
       "measuresPerChord": 1
     },
     {
@@ -294,6 +339,15 @@
       "measuresPerChord": 1
     },
     {
+      "name": "Key of E — E to Eadd9",
+      "instructions": "Switch between E and Eadd9 every measure. Add your pinky to the 2nd fret of the high E string — that F# is the 9th. It adds shimmer without changing the chord's character.",
+      "duration": 30,
+      "metronome": { "bpm": 80, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "Eadd9 works beautifully in place of E anywhere. The added F# rings against the open B string.",
+      "chords": ["E", "Eadd9"],
+      "measuresPerChord": 1
+    },
+    {
       "name": "Speed Round — G7 to C",
       "instructions": "G7 to C at faster tempo. Push your accuracy at speed — if you miss, catch the next beat.",
       "duration": 30,
@@ -363,6 +417,24 @@
       "metronome": { "bpm": 95, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
       "notes": "V7 to I in D major.",
       "chords": ["A7", "D"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Speed Round — Cadd9 to G",
+      "instructions": "Cadd9 to G at faster tempo. Both shapes share the 3rd fret — ring finger stays planted. Lock it in.",
+      "duration": 30,
+      "metronome": { "bpm": 95, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "IVadd9 to I in G major.",
+      "chords": ["Cadd9", "G"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Speed Round — Fmaj7 to Am",
+      "instructions": "Fmaj7 to Am at faster tempo. IVmaj7 to vi — a modern pop staple. Nail it clean and fast.",
+      "duration": 30,
+      "metronome": { "bpm": 95, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 1 },
+      "notes": "IVmaj7 to vi in C major.",
+      "chords": ["Fmaj7", "Am"],
       "measuresPerChord": 1
     }
   ]

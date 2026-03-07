@@ -61,8 +61,13 @@ enum ChordLibrary {
         "Emaj7": ChordFingering(frets: [0, 2, 1, 1, 0, 0]),
         "Gmaj7": ChordFingering(frets: [3, 2, 0, 0, 0, 2]),
 
-        // Add chords
+        // Major 7th (non-barre)
+        "Fmaj7": ChordFingering(frets: [-1, 3, 3, 2, 1, 0]),
+
+        // Add9 chords
         "Cadd9": ChordFingering(frets: [-1, 3, 2, 0, 3, 0]),
+        "Gadd9": ChordFingering(frets: [3, 0, 0, 2, 0, 3]),
+        "Eadd9": ChordFingering(frets: [0, 2, 2, 1, 0, 2]),
 
         // Barre chords
         "F":     ChordFingering(frets: [1, 1, 2, 3, 3, 1], baseFret: 1, barres: [1]),

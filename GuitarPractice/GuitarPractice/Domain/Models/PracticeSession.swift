@@ -17,6 +17,7 @@ enum SessionState: Equatable {
 @Observable
 class PracticeSession {
     let routine: PracticeRoutine
+    var displaySteps: [PracticeStep]
 
     var currentStepIndex: Int = 0
     var stepElapsedTime: TimeInterval = 0
@@ -26,13 +27,13 @@ class PracticeSession {
     var currentMeasure: Int = 1
 
     var currentStep: PracticeStep {
-        routine.steps[currentStepIndex]
+        displaySteps[currentStepIndex]
     }
 
     var isFirstStep: Bool { currentStepIndex == 0 }
-    var isLastStep: Bool { currentStepIndex == routine.steps.count - 1 }
+    var isLastStep: Bool { currentStepIndex == displaySteps.count - 1 }
     var stepsCompleted: Int { currentStepIndex }
-    var totalSteps: Int { routine.steps.count }
+    var totalSteps: Int { displaySteps.count }
 
     var progress: Double {
         guard totalSteps > 0 else { return 0 }
@@ -46,5 +47,6 @@ class PracticeSession {
 
     init(routine: PracticeRoutine) {
         self.routine = routine
+        self.displaySteps = routine.steps
     }
 }
