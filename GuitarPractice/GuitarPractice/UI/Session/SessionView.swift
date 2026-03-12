@@ -329,7 +329,7 @@ struct SessionView: View {
                     .font(.title3)
                     .foregroundStyle(.white.opacity(0.8))
 
-                Text("\(remaining)")
+                Text(viewModel.countdownDisplayValue)
                     .font(.system(size: 72, weight: .bold, design: .rounded))
                     .foregroundStyle(.white)
                     .contentTransition(.numericText())

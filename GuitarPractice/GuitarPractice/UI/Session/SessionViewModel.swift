@@ -11,6 +11,7 @@ class SessionViewModel {
     private var timer: Timer?
     private var countdownTimer: Timer?
     private var pausedCountdownRemaining: Int?
+    private var countdownTotalBeats: Int = 0
     /// BPM overrides per step index. Only contains entries for steps the user adjusted.
     private(set) var bpmOverrides: [Int: Int] = [:]
 
@@ -70,6 +71,17 @@ class SessionViewModel {
     var currentStepIndex: Int { session.currentStepIndex }
 
     var hasBPMChanges: Bool { !bpmOverrides.isEmpty }
+
+    /// Display value for countdown: "5, 6, 7, 8" style for beat-based, or raw seconds.
+    var countdownDisplayValue: String {
+        guard case .countdown(let remaining) = session.state else { return "" }
+        if countdownTotalBeats > 0 {
+            // Beat-based: count up from (beats+1). e.g. 4/4 → total=4, remaining goes 4,3,2,1 → display 5,6,7,8
+            let beatNumber = countdownTotalBeats - remaining + countdownTotalBeats + 1
+            return "\(beatNumber)"
+        }
+        return "\(remaining)"
+    }
 
     var timeDisplay: String {
         if isTimed {
@@ -432,20 +444,45 @@ class SessionViewModel {
     }
 
     private func beginCountdown() {
-        let duration = stepPauseDuration
         pausedCountdownRemaining = nil
-        session.state = .countdown(remaining: duration)
 
-        countdownTimer?.invalidate()
-        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            guard let self else { return }
-            if case .countdown(let remaining) = self.session.state {
-                if remaining <= 1 {
-                    self.countdownTimer?.invalidate()
-                    self.countdownTimer = nil
-                    self.beginPlaying()
-                } else {
-                    self.session.state = .countdown(remaining: remaining - 1)
+        // If the current step has a metronome, do a beat-based count-in at tempo
+        if let config = effectiveConfig(for: session.currentStepIndex) {
+            let beats = config.timeSignature.beatsPerMeasure
+            let interval = 60.0 / Double(config.bpm)
+            countdownTotalBeats = beats
+            session.state = .countdown(remaining: beats)
+
+            countdownTimer?.invalidate()
+            countdownTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
+                guard let self else { return }
+                if case .countdown(let remaining) = self.session.state {
+                    if remaining <= 1 {
+                        self.countdownTimer?.invalidate()
+                        self.countdownTimer = nil
+                        self.beginPlaying()
+                    } else {
+                        self.session.state = .countdown(remaining: remaining - 1)
+                    }
+                }
+            }
+        } else {
+            // No metronome — fall back to seconds-based countdown
+            let duration = stepPauseDuration
+            countdownTotalBeats = 0
+            session.state = .countdown(remaining: duration)
+
+            countdownTimer?.invalidate()
+            countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+                guard let self else { return }
+                if case .countdown(let remaining) = self.session.state {
+                    if remaining <= 1 {
+                        self.countdownTimer?.invalidate()
+                        self.countdownTimer = nil
+                        self.beginPlaying()
+                    } else {
+                        self.session.state = .countdown(remaining: remaining - 1)
+                    }
                 }
             }
         }
@@ -471,7 +508,13 @@ class SessionViewModel {
         guard let remaining = pausedCountdownRemaining else { return }
         pausedCountdownRemaining = nil
         session.state = .countdown(remaining: remaining)
-        countdownTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+        let interval: Double = if countdownTotalBeats > 0,
+            let config = effectiveConfig(for: session.currentStepIndex) {
+            60.0 / Double(config.bpm)
+        } else {
+            1.0
+        }
+        countdownTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
             guard let self else { return }
             if case .countdown(let r) = self.session.state {
                 if r <= 1 {
