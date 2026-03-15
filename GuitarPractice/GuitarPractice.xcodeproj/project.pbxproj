@@ -56,6 +56,9 @@
 		A10050 /* strum-pattern-workout.json in Resources */ = {isa = PBXBuildFile; fileRef = B10050; };
 		A10051 /* wagon-wheel.json in Resources */ = {isa = PBXBuildFile; fileRef = B10051; };
 		A10052 /* wagon-wheel-playalong.json in Resources */ = {isa = PBXBuildFile; fileRef = B10052; };
+		A10053 /* just-like-heaven.json in Resources */ = {isa = PBXBuildFile; fileRef = B10053; };
+		A10054 /* centerfold.json in Resources */ = {isa = PBXBuildFile; fileRef = B10054; };
+		A10055 /* sweet-caroline.json in Resources */ = {isa = PBXBuildFile; fileRef = B10055; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +113,9 @@
 		B10050 /* strum-pattern-workout.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "strum-pattern-workout.json"; sourceTree = "<group>"; };
 		B10051 /* wagon-wheel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "wagon-wheel.json"; sourceTree = "<group>"; };
 		B10052 /* wagon-wheel-playalong.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "wagon-wheel-playalong.json"; sourceTree = "<group>"; };
+		B10053 /* just-like-heaven.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "just-like-heaven.json"; sourceTree = "<group>"; };
+		B10054 /* centerfold.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "centerfold.json"; sourceTree = "<group>"; };
+		B10055 /* sweet-caroline.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "sweet-caroline.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +294,9 @@
 				B10050 /* strum-pattern-workout.json */,
 				B10051 /* wagon-wheel.json */,
 				B10052 /* wagon-wheel-playalong.json */,
+				B10053 /* just-like-heaven.json */,
+				B10054 /* centerfold.json */,
+				B10055 /* sweet-caroline.json */,
 			);
 			path = Routines;
 			sourceTree = "<group>";
@@ -381,6 +390,9 @@
 				A10050 /* strum-pattern-workout.json in Resources */,
 				A10051 /* wagon-wheel.json in Resources */,
 				A10052 /* wagon-wheel-playalong.json in Resources */,
+				A10053 /* just-like-heaven.json in Resources */,
+				A10054 /* centerfold.json in Resources */,
+				A10055 /* sweet-caroline.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

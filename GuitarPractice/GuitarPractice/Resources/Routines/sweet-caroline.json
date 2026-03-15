@@ -1,0 +1,68 @@
+{
+  "name": "Sweet Caroline — Section Drill",
+  "description": "Drill each section of Neil Diamond's 'Sweet Caroline' with capo on the 2nd fret. A crowd-pleasing classic with simple changes and a big singalong chorus. Focus on dynamics between the quiet verse and the explosive chorus.",
+  "category": "songs",
+  "estimatedDurationMinutes": 9,
+  "tags": ["beginner", "pop", "classic", "songs", "strumming"],
+  "artist": "Neil Diamond",
+  "key": "B Major (capo 2, A shapes)",
+  "capo": 2,
+  "youtubeURL": "https://www.youtube.com/watch?v=NsLyI1_R01M",
+  "sectionPauseDuration": 3,
+  "steps": [
+    {
+      "name": "Intro",
+      "sectionType": "intro",
+      "instructions": "The intro builds on an A chord with the iconic descending riff. Strum A and let it ring, then walk down the riff notes on the A and D strings. Keep it simple and let the anticipation build.",
+      "duration": 60,
+      "metronome": { "bpm": 126, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true },
+      "notes": "The three-note 'ba ba ba' horn hits land on A. If you want to mimic the riff, play the notes on the 5th string: open A, 2nd fret B, 4th fret C#, then back down.",
+      "chords": ["A", "A", "A", "A"],
+      "measuresPerChord": 1
+    },
+    {
+      "name": "Verse",
+      "sectionType": "verse",
+      "instructions": "The verse stays on A for four measures, then moves to D for two and E for two. Keep the strumming relaxed and steady — the verse is conversational, building toward the pre-chorus.",
+      "duration": 90,
+      "metronome": { "bpm": 126, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true },
+      "notes": "'Where it began, I can't begin to knowin'...' The long stretch on A means your strumming pattern needs to stay interesting. Vary your dynamics slightly to avoid going flat.",
+      "chords": ["A", "A", "D", "E"],
+      "measuresPerChord": 2,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Pre-Chorus",
+      "sectionType": "bridge",
+      "instructions": "The pre-chorus builds tension: A for two measures, then D for two, then E held for two with building intensity. This is the 'hands, touchin' hands' section — crescendo into the chorus.",
+      "duration": 60,
+      "metronome": { "bpm": 126, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true },
+      "notes": "'Hands, touchin' hands, reachin' out, touchin' me, touchin' you...' Build your strum intensity through this section. The E at the end should be driving hard, setting up the big chorus hit.",
+      "chords": ["A", "D", "E", "E"],
+      "measuresPerChord": 2,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Chorus",
+      "sectionType": "chorus",
+      "instructions": "The chorus explodes on A D E — big open strums, maximum energy. The 'ba ba ba' hits are on A. Two measures per chord, let them ring out and sing along.",
+      "duration": 90,
+      "metronome": { "bpm": 126, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true },
+      "notes": "'Sweet Caroline! BA BA BA! Good times never seemed so good!' This is the moment everyone sings along. Commit fully to the dynamics — the contrast with the verse is what makes this song work.",
+      "chords": ["A", "D", "E", "D"],
+      "measuresPerChord": 2,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Outro",
+      "sectionType": "outro",
+      "instructions": "The outro repeats the chorus progression A D E D, gradually building to a final big A chord. Play through 2-3 cycles and end with a strong downstrum on A, letting it ring.",
+      "duration": 60,
+      "metronome": { "bpm": 126, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true },
+      "notes": "The crowd never wants this one to end. Keep the energy up through the repeats and finish strong on A.",
+      "chords": ["A", "D", "E", "D"],
+      "measuresPerChord": 2,
+      "strumPattern": "D.DU.UDU"
+    }
+  ]
+}

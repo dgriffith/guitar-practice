@@ -1,0 +1,66 @@
+{
+  "name": "Just Like Heaven — Section Drill",
+  "description": "Drill each section of The Cure's 'Just Like Heaven' with capo on the 2nd fret. The song uses bright, arpeggiated chord shapes in G position (sounding in A). Focus on clean chord changes and the driving eighth-note feel.",
+  "category": "songs",
+  "estimatedDurationMinutes": 10,
+  "tags": ["intermediate", "alternative", "80s", "songs", "arpeggiated"],
+  "artist": "The Cure",
+  "key": "A Major (capo 2, G shapes)",
+  "capo": 2,
+  "youtubeURL": "https://www.youtube.com/watch?v=n3nPiBai66M",
+  "sectionPauseDuration": 3,
+  "steps": [
+    {
+      "name": "Intro Riff",
+      "sectionType": "intro",
+      "instructions": "Play the iconic intro riff over G D Em C. The original uses arpeggiated picking on the higher strings. Start by strumming the changes to get the feel, then try picking individual notes if comfortable.",
+      "duration": 90,
+      "metronome": { "bpm": 132, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "Capo 2. The riff is built from chord tones on the top 3 strings. The G and D shapes let the open strings ring out — don't mute them. Keep the eighth-note pulse steady throughout.",
+      "chords": ["G", "D", "Em", "C"],
+      "measuresPerChord": 2
+    },
+    {
+      "name": "Verse",
+      "sectionType": "verse",
+      "instructions": "Strum the verse progression G D Em C. Keep the strumming lighter than the chorus — the verse should feel airy and building. Two measures per chord.",
+      "duration": 90,
+      "metronome": { "bpm": 132, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "'Show me, show me, show me how you do that trick...' The verse builds tension that releases in the chorus. Keep your strumming hand moving in steady eighth notes even on lighter strums.",
+      "chords": ["G", "D", "Em", "C"],
+      "measuresPerChord": 2,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Chorus",
+      "sectionType": "chorus",
+      "instructions": "The chorus lifts with C D G Em, then resolves C D G. Drive the energy up — strum with more attack and let the chords ring. The shift from C to D is the key moment.",
+      "duration": 90,
+      "metronome": { "bpm": 132, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "'Just like heaven...' The chorus changes the chord order from the verse — notice how starting on C instead of G completely shifts the energy. Dig into the D to G transition.",
+      "chords": ["C", "D", "G", "Em", "C", "D", "G", "G"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Bridge",
+      "sectionType": "bridge",
+      "instructions": "The bridge uses Em C G D with a more open, sustained feel. Let chords ring longer and ease off the strumming intensity. This section builds back toward the final chorus.",
+      "duration": 60,
+      "metronome": { "bpm": 132, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "'You, soft and only... you, lost and lonely...' Pull back the dynamics here. The bridge is the emotional core — make space for the melody by simplifying your right hand.",
+      "chords": ["Em", "C", "G", "D"],
+      "measuresPerChord": 2
+    },
+    {
+      "name": "Outro",
+      "sectionType": "outro",
+      "instructions": "The outro reprises the intro riff over G D Em C, gradually fading. Try to recreate the arpeggiated picking from the intro. End on a sustained G chord.",
+      "duration": 60,
+      "metronome": { "bpm": 132, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "The song fades out on this progression. In practice, play through 3-4 cycles and let the final G ring out cleanly.",
+      "chords": ["G", "D", "Em", "C"],
+      "measuresPerChord": 2
+    }
+  ]
+}

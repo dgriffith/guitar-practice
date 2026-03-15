@@ -1,0 +1,68 @@
+{
+  "name": "Centerfold — Section Drill",
+  "description": "Drill each section of The J. Geils Band's 'Centerfold'. A driving, high-energy rock song built on simple chord changes. Focus on tight, punchy strumming and keeping up with the tempo.",
+  "category": "songs",
+  "estimatedDurationMinutes": 9,
+  "tags": ["intermediate", "rock", "80s", "songs", "strumming"],
+  "artist": "The J. Geils Band",
+  "key": "G Major",
+  "capo": null,
+  "youtubeURL": "https://www.youtube.com/watch?v=BqDjMZKf-wg",
+  "sectionPauseDuration": 3,
+  "steps": [
+    {
+      "name": "Intro Riff",
+      "sectionType": "intro",
+      "instructions": "The iconic 'na na' riff alternates between G and C. Play tight, muted downstrokes to mimic the staccato keyboard feel. One measure each, keep it punchy.",
+      "duration": 60,
+      "metronome": { "bpm": 130, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "The original is a keyboard riff, but on guitar you can replicate the energy with short, choppy strums. Try palm muting on the lower strings and letting beats 2 and 4 pop.",
+      "chords": ["G", "C", "G", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Verse",
+      "sectionType": "verse",
+      "instructions": "The verse rides on G and C, one measure each. Keep the strumming driving and steady — the vocal rhythm is busy so the guitar needs to be a solid foundation underneath.",
+      "duration": 90,
+      "metronome": { "bpm": 130, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "'Does she walk? Does she talk? Does she come complete?' Stay locked into the groove. The G to C change happens every bar — make the transitions snappy with no gaps.",
+      "chords": ["G", "C", "G", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Pre-Chorus",
+      "sectionType": "bridge",
+      "instructions": "The pre-chorus shifts to Em and C for two measures each, then D for two measures to build tension into the chorus. Let the chords open up here compared to the tight verse strumming.",
+      "duration": 60,
+      "metronome": { "bpm": 130, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "'It's okay, I understand...' The Em creates contrast with the G-C verse. The D chord at the end builds anticipation — lean into it and strum harder heading into the chorus.",
+      "chords": ["Em", "C", "D", "D"],
+      "measuresPerChord": 2
+    },
+    {
+      "name": "Chorus",
+      "sectionType": "chorus",
+      "instructions": "The chorus is the big payoff — G C G C with maximum energy. Open up your strumming, hit all the strings, and drive the rhythm. This is the sing-along moment.",
+      "duration": 90,
+      "metronome": { "bpm": 130, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "'My angel is the centerfold!' Same chords as the verse but with more attack. The difference between verse and chorus is all in the dynamics — really dig in here.",
+      "chords": ["G", "C", "G", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    },
+    {
+      "name": "Outro",
+      "sectionType": "outro",
+      "instructions": "The outro reprises the intro riff over G and C, with the 'na na' hook. Bring back the punchy, staccato feel from the intro. End on a strong G downstrum.",
+      "duration": 60,
+      "metronome": { "bpm": 130, "timeSignature": { "beatsPerMeasure": 4, "beatUnit": 4 }, "accentDownbeat": true, "subdivisions": 2 },
+      "notes": "Play through several cycles of the riff, then end cleanly on G. In the original the song fades — in practice, commit to a definitive ending.",
+      "chords": ["G", "C", "G", "C"],
+      "measuresPerChord": 1,
+      "strumPattern": "D.DU.UDU"
+    }
+  ]
+}

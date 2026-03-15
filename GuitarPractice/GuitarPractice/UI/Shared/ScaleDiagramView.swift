@@ -38,7 +38,7 @@ struct ScaleDiagramView: View {
         let topMargin: CGFloat = 14
         let scaleRadius: CGFloat = 5
         let rootRadius: CGFloat = 6
-        let leftPadding: CGFloat = position.startFret > 0 ? 24 : 15
+        let leftPadding: CGFloat = position.startFret > 0 ? 28 : 15
         let rightPadding: CGFloat = 15
 
         Canvas { context, size in
@@ -51,8 +51,8 @@ struct ScaleDiagramView: View {
                 context.fill(Path(nutRect), with: .color(.primary))
             } else {
                 let fretText = Text("\(position.startFret)fr")
-                    .font(.system(size: 9))
-                    .foregroundStyle(.secondary)
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundStyle(.primary)
                 context.draw(fretText, at: CGPoint(x: originX - 12, y: originY + fretSpacing / 2))
             }
 
