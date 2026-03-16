@@ -20,6 +20,11 @@ class SessionViewModel {
     var isLooping: Bool = false
     var isRandomized: Bool = false
 
+    // MARK: - Global Tempo Offset
+
+    /// A BPM offset applied to every step in this routine, persisted on save.
+    var globalBPMOffset: Int = 0
+
     // MARK: - Voice State
 
     private(set) var lastVoiceCommand: VoiceCommand?
@@ -70,7 +75,9 @@ class SessionViewModel {
     var steps: [PracticeStep] { session.displaySteps }
     var currentStepIndex: Int { session.currentStepIndex }
 
-    var hasBPMChanges: Bool { !bpmOverrides.isEmpty }
+    var hasBPMChanges: Bool {
+        !bpmOverrides.isEmpty || globalBPMOffset != session.routine.bpmOffset
+    }
 
     /// Display value for countdown: "5, 6, 7, 8" style for beat-based, or raw seconds.
     var countdownDisplayValue: String {
@@ -148,6 +155,7 @@ class SessionViewModel {
         self.soundPlayer = SoundPlayer()
         self.speechRecognizer = SpeechRecognizer()
         self.isRandomized = routine.randomizeSteps
+        self.globalBPMOffset = routine.bpmOffset
 
         if routine.randomizeSteps {
             session.displaySteps = routine.steps.shuffled()
@@ -205,13 +213,35 @@ class SessionViewModel {
         guard let config = session.currentStep.metronome else { return }
         bpmOverrides.removeValue(forKey: session.currentStepIndex)
 
-        metronome.updateConfig(config)
+        let effective = effectiveBPM(for: session.currentStepIndex)
+        metronome.updateConfig(config.withBPM(effective))
         if session.state == .playing {
             metronome.start()
         }
     }
 
-    /// Build a modified routine with all BPM overrides applied, always in original step order.
+    // MARK: - Global Tempo
+
+    func adjustGlobalBPM(by delta: Int) {
+        globalBPMOffset += delta
+        applyCurrentTempoToMetronome()
+    }
+
+    func resetGlobalBPM() {
+        globalBPMOffset = 0
+        applyCurrentTempoToMetronome()
+    }
+
+    private func applyCurrentTempoToMetronome() {
+        guard let config = session.currentStep.metronome else { return }
+        let effective = effectiveBPM(for: session.currentStepIndex)
+        metronome.updateConfig(config.withBPM(effective))
+        if session.state == .playing {
+            metronome.start()
+        }
+    }
+
+    /// Build a modified routine with all BPM overrides and global offset applied, always in original step order.
     func routineWithBPMChanges() -> PracticeRoutine {
         let modifiedSteps = session.displaySteps.enumerated().map { index, step in
             if let overrideBPM = bpmOverrides[index], let config = step.metronome {
@@ -222,16 +252,29 @@ class SessionViewModel {
         // Rebuild in original order by matching step IDs
         let modifiedByID = Dictionary(uniqueKeysWithValues: modifiedSteps.map { ($0.id, $0) })
         let orderedSteps = session.routine.steps.map { modifiedByID[$0.id] ?? $0 }
-        return session.routine.withSteps(orderedSteps)
+        return session.routine.withSteps(orderedSteps).withBPMOffset(globalBPMOffset)
     }
 
     /// Summary of which steps had BPM changes.
     var bpmChangeSummary: [String] {
-        bpmOverrides.sorted(by: { $0.key < $1.key }).compactMap { index, newBPM in
+        var lines: [String] = []
+        if globalBPMOffset != session.routine.bpmOffset {
+            let oldOffset = session.routine.bpmOffset
+            let label = globalBPMOffset == 0 ? "removed"
+                : (globalBPMOffset > 0 ? "+\(globalBPMOffset)" : "\(globalBPMOffset)")
+            if oldOffset == 0 {
+                lines.append("Global tempo: \(label) BPM")
+            } else {
+                let oldLabel = oldOffset > 0 ? "+\(oldOffset)" : "\(oldOffset)"
+                lines.append("Global tempo: \(oldLabel) → \(label) BPM")
+            }
+        }
+        lines += bpmOverrides.sorted(by: { $0.key < $1.key }).compactMap { index, newBPM in
             let step = session.displaySteps[index]
             guard let original = step.metronome?.bpm else { return nil }
             return "\(step.name): \(original) → \(newBPM) BPM"
         }
+        return lines
     }
 
     // MARK: - Voice Commands
@@ -407,18 +450,20 @@ class SessionViewModel {
     // MARK: - Private
 
     private func effectiveBPM(for stepIndex: Int) -> Int {
+        let base: Int
         if let override = bpmOverrides[stepIndex] {
-            return override
+            base = override
+        } else {
+            base = session.displaySteps[stepIndex].metronome?.bpm ?? 0
         }
-        return session.displaySteps[stepIndex].metronome?.bpm ?? 0
+        guard base > 0 else { return 0 }
+        return min(300, max(20, base + globalBPMOffset))
     }
 
     private func effectiveConfig(for stepIndex: Int) -> MetronomeConfig? {
         guard let config = session.displaySteps[stepIndex].metronome else { return nil }
-        if let override = bpmOverrides[stepIndex] {
-            return config.withBPM(override)
-        }
-        return config
+        let bpm = effectiveBPM(for: stepIndex)
+        return config.withBPM(bpm)
     }
 
     private var stepPauseEnabled: Bool {

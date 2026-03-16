@@ -173,12 +173,13 @@ struct PracticeRoutine: Identifiable, Codable, Hashable {
     let youtubeURL: String?
     let sectionPauseDuration: Double?
     let randomizeSteps: Bool
+    let bpmOffset: Int
 
     init(id: UUID = UUID(), name: String, description: String, category: RoutineCategory,
          estimatedDurationMinutes: Int?, tags: [String], steps: [PracticeStep],
          artist: String? = nil, key: String? = nil, capo: Int? = nil,
          youtubeURL: String? = nil, sectionPauseDuration: Double? = nil,
-         randomizeSteps: Bool = false) {
+         randomizeSteps: Bool = false, bpmOffset: Int = 0) {
         self.id = id
         self.name = name
         self.description = description
@@ -192,6 +193,7 @@ struct PracticeRoutine: Identifiable, Codable, Hashable {
         self.youtubeURL = youtubeURL
         self.sectionPauseDuration = sectionPauseDuration
         self.randomizeSteps = randomizeSteps
+        self.bpmOffset = bpmOffset
     }
 
     var totalTimedDuration: TimeInterval {
@@ -218,14 +220,23 @@ struct PracticeRoutine: Identifiable, Codable, Hashable {
                         tags: tags, steps: newSteps, artist: artist, key: key,
                         capo: capo, youtubeURL: youtubeURL,
                         sectionPauseDuration: sectionPauseDuration,
-                        randomizeSteps: randomizeSteps)
+                        randomizeSteps: randomizeSteps, bpmOffset: bpmOffset)
+    }
+
+    func withBPMOffset(_ offset: Int) -> PracticeRoutine {
+        PracticeRoutine(id: id, name: name, description: description,
+                        category: category, estimatedDurationMinutes: estimatedDurationMinutes,
+                        tags: tags, steps: steps, artist: artist, key: key,
+                        capo: capo, youtubeURL: youtubeURL,
+                        sectionPauseDuration: sectionPauseDuration,
+                        randomizeSteps: randomizeSteps, bpmOffset: offset)
     }
 }
 
 extension PracticeRoutine {
     enum CodingKeys: String, CodingKey {
         case id, name, description, category, estimatedDurationMinutes, tags, steps
-        case artist, key, capo, youtubeURL, sectionPauseDuration, randomizeSteps
+        case artist, key, capo, youtubeURL, sectionPauseDuration, randomizeSteps, bpmOffset
     }
 
     init(from decoder: Decoder) throws {
@@ -243,5 +254,6 @@ extension PracticeRoutine {
         self.youtubeURL = try container.decodeIfPresent(String.self, forKey: .youtubeURL)
         self.sectionPauseDuration = try container.decodeIfPresent(Double.self, forKey: .sectionPauseDuration)
         self.randomizeSteps = try container.decodeIfPresent(Bool.self, forKey: .randomizeSteps) ?? false
+        self.bpmOffset = try container.decodeIfPresent(Int.self, forKey: .bpmOffset) ?? 0
     }
 }

@@ -37,6 +37,9 @@ struct SessionView: View {
                         .clipShape(Capsule())
                 }
 
+                // Global tempo offset
+                globalTempoControl
+
                 // Loop toggle
                 Button(action: { viewModel.isLooping.toggle() }) {
                     Image(systemName: viewModel.isLooping ? "repeat.1" : "repeat")
@@ -315,6 +318,47 @@ struct SessionView: View {
                 }
             }
         }
+    }
+
+    // MARK: - Global Tempo Control
+
+    @ViewBuilder
+    private var globalTempoControl: some View {
+        HStack(spacing: 3) {
+            Button { viewModel.adjustGlobalBPM(by: -5) } label: {
+                Image(systemName: "minus")
+                    .font(.caption2)
+            }
+            .buttonStyle(.plain)
+            .help("All steps -5 BPM")
+
+            Button {
+                if viewModel.globalBPMOffset != 0 {
+                    viewModel.resetGlobalBPM()
+                }
+            } label: {
+                Text(viewModel.globalBPMOffset == 0
+                     ? "Tempo"
+                     : (viewModel.globalBPMOffset > 0 ? "+\(viewModel.globalBPMOffset)" : "\(viewModel.globalBPMOffset)"))
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .monospacedDigit()
+                    .foregroundStyle(viewModel.globalBPMOffset == 0 ? Color.secondary : Color.orange)
+            }
+            .buttonStyle(.plain)
+            .help(viewModel.globalBPMOffset == 0 ? "Routine tempo offset" : "Reset routine tempo offset")
+
+            Button { viewModel.adjustGlobalBPM(by: 5) } label: {
+                Image(systemName: "plus")
+                    .font(.caption2)
+            }
+            .buttonStyle(.plain)
+            .help("All steps +5 BPM")
+        }
+        .padding(.horizontal, 6)
+        .padding(.vertical, 3)
+        .background(viewModel.globalBPMOffset != 0 ? Color.orange.opacity(0.1) : Color.clear)
+        .clipShape(Capsule())
     }
 
     // MARK: - Countdown Overlay
